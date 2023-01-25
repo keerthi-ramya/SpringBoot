@@ -1,0 +1,1453 @@
+{
+	"info": {
+		"_postman_id": "e0b169ce-3c20-456c-8834-c7c5810e30cd",
+		"name": "1 SVAAS2.0-DOC-LOCAL",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Patient Login",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"appName\": \"PWA\",\n    \"username\": \"8605062661\",\n    \"type\": \"PHONE\",\n    \"pinValue\": \"123456\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/auth/employee/signin",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"employee",
+						"signin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Doctor Home Screen",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{userToken}}",
+						"type": "text"
+					},
+					{
+						"key": "tenantId",
+						"value": "ABHI",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/doctor/search/v2/home",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"doctor",
+						"search",
+						"v2",
+						"home"
+					],
+					"query": [
+						{
+							"key": "pageNo",
+							"value": "0",
+							"disabled": true
+						},
+						{
+							"key": "pageSize",
+							"value": "10",
+							"disabled": true
+						},
+						{
+							"key": "filterBy",
+							"value": "ALL",
+							"disabled": true
+						},
+						{
+							"key": "status",
+							"value": "PAST",
+							"disabled": true
+						},
+						{
+							"key": "search",
+							"value": "Card",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Doctors List By specialityId",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer {{userToken}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/doctor/search/v2/list?specialityId=3&latitude=17.384999661659876&longitude=78.48669977858663&sortCode=DISTANCE&isVisit=true&pinCode=500095&pageNo=0&pageSize=10",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"doctor",
+						"search",
+						"v2",
+						"list"
+					],
+					"query": [
+						{
+							"key": "specialityId",
+							"value": "3"
+						},
+						{
+							"key": "latitude",
+							"value": "17.384999661659876"
+						},
+						{
+							"key": "longitude",
+							"value": "78.48669977858663"
+						},
+						{
+							"key": "sortCode",
+							"value": "DISTANCE"
+						},
+						{
+							"key": "isVisit",
+							"value": "true"
+						},
+						{
+							"key": "pinCode",
+							"value": "500095"
+						},
+						{
+							"key": "pageNo",
+							"value": "0"
+						},
+						{
+							"key": "pageSize",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "HC login stage",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"mamathar@drreddys.com\",\r\n    \"type\": \"EMAIL\",\r\n    \"pinValue\": \"123456\",\r\n    \"appName\": \"HC\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/auth/employee/signin",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"employee",
+						"signin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Appointment Details_Past",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{userToken}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/doctor/appointment/v2/ALL?filterBy=&pageNo=&pageSize=&patientId=SVEMP-8fb591e6-1b96-11ec-ac75-d3abdd530933",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"doctor",
+						"appointment",
+						"v2",
+						"ALL"
+					],
+					"query": [
+						{
+							"key": "filterBy",
+							"value": ""
+						},
+						{
+							"key": "pageNo",
+							"value": ""
+						},
+						{
+							"key": "pageSize",
+							"value": ""
+						},
+						{
+							"key": "patientId",
+							"value": "SVEMP-8fb591e6-1b96-11ec-ac75-d3abdd530933"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search Suggestions",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer {{userToken}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/doctor/search/v2/suggestions?userLocationLat=17.384999661659876&userLocationLong=78.48669977858663&searchTerm=divya&pinCode=500095",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"doctor",
+						"search",
+						"v2",
+						"suggestions"
+					],
+					"query": [
+						{
+							"key": "userLocationLat",
+							"value": "17.384999661659876"
+						},
+						{
+							"key": "userLocationLong",
+							"value": "78.48669977858663"
+						},
+						{
+							"key": "searchTerm",
+							"value": "divya"
+						},
+						{
+							"key": "pinCode",
+							"value": "500095"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Specialization List",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{userToken}}"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/doctor/search/v2/specializations",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"doctor",
+						"search",
+						"v2",
+						"specializations"
+					],
+					"query": [
+						{
+							"key": "search",
+							"value": "Card",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Marketing Data",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer {{userToken}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/svaas/patient/v2/marketinginfo",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"svaas",
+						"patient",
+						"v2",
+						"marketinginfo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Doctor Details",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{userToken}}",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/doctor/search/v2/details?id=4",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"doctor",
+						"search",
+						"v2",
+						"details"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "4"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Appointment Details by table Id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{userToken}}",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/doctor/appointment/v2/details?appointmentId=10397&patientId=SVEMP-8fb591e6-1b96-11ec-ac75-d3abdd530933",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"doctor",
+						"appointment",
+						"v2",
+						"details"
+					],
+					"query": [
+						{
+							"key": "appointmentId",
+							"value": "10397"
+						},
+						{
+							"key": "patientId",
+							"value": "SVEMP-8fb591e6-1b96-11ec-ac75-d3abdd530933"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Patient Dependents",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer {{userToken}}",
+						"type": "text"
+					},
+					{
+						"key": "tenantId",
+						"value": "ABHI",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/svaas/patient/v2/dependents?phoneNo=9963982999",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"svaas",
+						"patient",
+						"v2",
+						"dependents"
+					],
+					"query": [
+						{
+							"key": "phoneNo",
+							"value": "9963982999"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Doctor MDM",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{userToken}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "text/plain"
+					},
+					{
+						"key": "Cookie",
+						"value": "JSESSIONID=031FB4FD4E0D22FC6125E2DA4F05D505"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"query\": \"query doctorName($advanceQuery: String) {\\n  getDoctors(advanceQuery: $advanceQuery) {\\n    firstName\\n    middleName\\n    lastName\\n    email\\n    primarySpecialization\\n    secondarySpecialization\\n    yearOfExperience\\n    languages\\n    profilePicture\\n    qualifications\\n    clinics {\\n      id\\n      branchId\\n      branchName\\n      location {\\n        lon\\n        lat\\n      }\\n      address\\n      pincode\\n      state\\n      city\\n      consultationFee\\n    }\\n    eConsultation {\\n      consultationFee\\n      insuranceProviderId\\n    }\\n  }\\n}\\n\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8888/doctor/search/v2/mdm",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"doctor",
+						"search",
+						"v2",
+						"mdm"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "slots",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "bearer {{userToken}}"
+					},
+					{
+						"key": "Cookie",
+						"value": "JSESSIONID=86D3004751F773FECB7E544D88B63D44"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/doctor/appointment/v2/slots?appointmentType=VIDEO&clinicId=6576547&doctorId=5459627&fromDate=17/08/2022&toDate=17/08/2022&patientId=SVEMP-8fb591e6-1b96-11ec-ac75-d3abdd530933",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"doctor",
+						"appointment",
+						"v2",
+						"slots"
+					],
+					"query": [
+						{
+							"key": "appointmentType",
+							"value": "VIDEO"
+						},
+						{
+							"key": "clinicId",
+							"value": "6576547"
+						},
+						{
+							"key": "doctorId",
+							"value": "5459627"
+						},
+						{
+							"key": "fromDate",
+							"value": "17/08/2022"
+						},
+						{
+							"key": "toDate",
+							"value": "17/08/2022"
+						},
+						{
+							"key": "patientId",
+							"value": "SVEMP-8fb591e6-1b96-11ec-ac75-d3abdd530933"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "HC-appointment-book(HLPX)",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{hcLogin}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"doctorId\": 4,\n    \"clinicId\": 4819,\n    \"userId\": 5497,\n    \"date\": \"17/05/2022\",\n    \"productCode\": \"DR0018D4\",\n    \"type\": \"VIDEO\",\n    \"slot\": {\n        \"startTime\": \"07:40\",\n        \"endTime\": \"07:50\"\n    }\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/doctor/appointment/book",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"doctor",
+						"appointment",
+						"book"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "book appointment by Patient Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{userToken}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Cookie",
+						"value": "JSESSIONID=86D3004751F773FECB7E544D88B63D44"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"doctorId\": 5459627,\n    \"clinicId\": 6576547,\n    \"date\": \"17/08/2022\",\n    \"productCode\": \"DR006D2\",\n    \"type\": \"VIDEO\",\n    \"slot\": {\n        \"startTime\": \"19:50\",\n        \"endTime\": \"20:00\"\n    }\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/doctor/appointment/v2/book?patientId=SVEMP-8fb591e6-1b96-11ec-ac75-d3abdd530933",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"doctor",
+						"appointment",
+						"v2",
+						"book"
+					],
+					"query": [
+						{
+							"key": "patientId",
+							"value": "SVEMP-8fb591e6-1b96-11ec-ac75-d3abdd530933"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cancel appointment",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{userToken}}"
+					},
+					{
+						"key": "tenantId",
+						"value": "ABHI",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/doctor/appointment/v2/cancel?appointmentId=10398&cancellationReason=SAAYANZZZZZZZZZZZZZZ&patientId=SVEMP-8fb591e6-1b96-11ec-ac75-d3abdd530933",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"doctor",
+						"appointment",
+						"v2",
+						"cancel"
+					],
+					"query": [
+						{
+							"key": "appointmentId",
+							"value": "10398"
+						},
+						{
+							"key": "cancellationReason",
+							"value": "SAAYANZZZZZZZZZZZZZZ"
+						},
+						{
+							"key": "patientId",
+							"value": "SVEMP-8fb591e6-1b96-11ec-ac75-d3abdd530933"
+						},
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "reschedule",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{userToken}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Cookie",
+						"value": "JSESSIONID=86D3004751F773FECB7E544D88B63D44"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"appointmentId\": 10398,\n    \"date\": \"09/08/2022\",\n    \"slot\": {\n        \"startTime\": \"21:40\",\n        \"endTime\": \"21:50\"\n    }\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/doctor/appointment/v2/reschedule?patientId=SVEMP-8fb591e6-1b96-11ec-ac75-d3abdd530933",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"doctor",
+						"appointment",
+						"v2",
+						"reschedule"
+					],
+					"query": [
+						{
+							"key": "patientId",
+							"value": "SVEMP-8fb591e6-1b96-11ec-ac75-d3abdd530933"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Upload AppointmentFile",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{userToken}}",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/laptop/Pictures/Screenshots/Screenshot (59).png"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseUrl}}/doctor/appointment/v2/upload?appointmentId=9555",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"doctor",
+						"appointment",
+						"v2",
+						"upload"
+					],
+					"query": [
+						{
+							"key": "appointmentId",
+							"value": "9555"
+						},
+						{
+							"key": "policyId",
+							"value": "OPD665243",
+							"disabled": true
+						},
+						{
+							"key": "policyCompany",
+							"value": "ABHI",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "coverage",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer {{userToken}}",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/coverage-service/v2/coverage",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"coverage-service",
+						"v2",
+						"coverage"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Appointment_Detail_By_svaas_Appointment_id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer {{userToken}}",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/doctor/appointment/details?appointmentId=D-HX2804-1710-8218667785",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"doctor",
+						"appointment",
+						"details"
+					],
+					"query": [
+						{
+							"key": "appointmentId",
+							"value": "D-HX2804-1710-8218667785"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(HLPX) login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "sad"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n \"clientId\": \"HEALTHPLIX\",\n \"clientKey\": \"healthplix-client\",\n \"clientSecret\": \"9CbXXDP.x=L98V:C\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/auth/partners/login",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"partners",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Navia login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "sad",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n \"clientId\": \"NAVIA\",\n \"clientKey\": \"navia-client\",\n \"clientSecret\": \"9CbXXDP.x=L98V:C\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}:8080/partners/login",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"port": "8080",
+					"path": [
+						"partners",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "trackStatus",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{userToken}}"
+					},
+					{
+						"key": "Cookie",
+						"value": "JSESSIONID=EA1F3378531DF0C88E86CAE58F6EBE69"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8888/doctor/appointment/track/status?appointmentId=123",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"doctor",
+						"appointment",
+						"track",
+						"status"
+					],
+					"query": [
+						{
+							"key": "appointmentId",
+							"value": "123"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update appointment(HLPX) Copy",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{partnerToken}}"
+					},
+					{
+						"key": "Cookie",
+						"value": "JSESSIONID=48DC6B476FA7D52DB0F0058E026D79F7"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"data\": {\n        \"appointment_details\": {\n            \"appointment_date\": \"2022-05-10\",\n            \"start_time\": \"10:00\",\n            \"end_time\": \"10:10\",\n            \"appointment_type\": \"InPerson\",\n            \"appointment_status\": \"confirmed\"\n        },\n        \"appointment_id\": \"45455652125\",\n        \"doctor_id\": \"5459627\",\n        \"branch_id\": \"6576547\",\n        \"policy_id\": \"OPD552248\",\n        \"policy_company\": \"Aditya Birla Health Insurance\"\n    }\n}\n"
+				},
+				"url": {
+					"raw": "{{baseUrl}}:8080/doctor/inbound/appointments/45455652125",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"port": "8080",
+					"path": [
+						"doctor",
+						"inbound",
+						"appointments",
+						"45455652125"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(HLPX) book appointment",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{partnerToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{partnerToken}}",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"data\": {\n        \"appointment_details\": {\n            \"appointment_date\": \"2022-05-14\",\n            \"start_time\": \"08:40\",\n            \"end_time\": \"08:50\",\n            \"appointment_type\": \"OnlineConsultation\",\n            \"appointment_status\": \"confirmed\"\n        },\n        \"appointment_id\": \"45455652126\",\n        \"doctor_id\": \"5459627\",\n        \"branch_id\": \"6576547\",\n        \"policy_id\": \"OPD665243\",\n        \"policy_company\": \"Aditya Birla Health Insurance\"\n    }\n}"
+				},
+				"url": {
+					"raw": "{{base}}:8080/doctor/inbound/appointments/",
+					"host": [
+						"{{base}}"
+					],
+					"port": "8080",
+					"path": [
+						"doctor",
+						"inbound",
+						"appointments",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(HLPX) push prescription",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{partnerToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{partnerToken}}",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"data\": {\n        \"advice\": \"advice\",\n        \"appointment_id\": \"687298118\",\n        \"svaas_appointment_id\": \"D-HX2005-1423-9543606342\",\n        \"branch_id\": \"6576547\",\n        \"complaints\": \"fever\",\n        \"diagnosis\": \"dengue fever\",\n        \"doctor_id\": \"5459627\",\n        \"next_visit\": \"2022-05-31\",\n        \"policy_company\": \"ABHI\",\n        \"policy_id\": \"OPD775623\",\n        \"referred_doctor\": \"Dr Mamatha\",\n        \"rx_date\": \"2022-05-25\",\n        \"rx_pdf\": \"https://www.orimi.com/pdf-test.pdf\",\n        \"rx_raw\": [\n            {\n                \"dosage\": \"0-1-1\",\n                \"duration\": \"50 Days\",\n                \"frequency\": \"daily\",\n                \"timing\": \"Before Food\",\n                \"medicine_name\": \"1 0.5ML INJ\"\n            },\n            {\n                \"dosage\": \"1-1-1\",\n                \"duration\": \"60 Days\",\n                \"frequency\": \"daily\",\n                \"timing\": \"Before Food\",\n                \"medicine_name\": \"10D 500ML NIRLIFE \"\n            },\n            {\n                \"dosage\": \"0-1-1\",\n                \"duration\": \"50 Days\",\n                \"frequency\": \"daily\",\n                \"timing\": \"Before Food\",\n                \"medicine_name\": \"2BACONIL 2MG GUMS\"\n            },\n            {\n                \"dosage\": \"0-1-1\",\n                \"duration\": \"50 Days\",\n                \"frequency\": \"daily\",\n                \"timing\": \"Before Food\",\n                \"medicine_name\": \"3G DOX O TAB\"\n            },\n            {\n                \"dosage\": \"0-1-1\",\n                \"duration\": \"50 Days\",\n                \"frequency\": \"daily\",\n                \"timing\": \"Before Food\",\n                \"medicine_name\": \"ZYWAN 300MG CAP\"\n            },\n            {\n                \"dosage\": \"0-1-1\",\n                \"duration\": \"50 Days\",\n                \"frequency\": \"daily\",\n                \"timing\": \"Before Food\",\n                \"medicine_name\": \"ZYZOLIN 10ML ADULT NASAL SPRAY\"\n            },\n            {\n                \"dosage\": \"0-1-1\",\n                \"duration\": \"50 Days\",\n                \"frequency\": \"daily\",\n                \"timing\": \"Before Food\",\n                \"medicine_name\": \"ZYVEN OD PLUS 50MG TAB\"\n            },\n            {\n                \"dosage\": \"0-1-1\",\n                \"duration\": \"50 Days\",\n                \"frequency\": \"daily\",\n                \"timing\": \"Before Food\",\n                \"medicine_name\": \"RANTAC 150MG TABLET\"\n            }\n        ],\n        \"tests_advised\": [\n            \"Creatinine - Serum\",\n            \"Creatinine - Urine\",\n            \"UREA - Serum\",\n            \"Creatinine Clearance Test - Urine\",\n            \"HBA1C\",\n            \"X-RAY - HSG\",\n            \"Cholesterol - Total - Serum\",\n            \"ECG\"\n        ],\n        \"vitals\": {\n            \"bmi\": \"bmi\",\n            \"bp-dia\": \"12\",\n            \"bp-sys\": \"23\",\n            \"height\": \"3345\",\n            \"pulse\": \"80\",\n            \"weight\": \"200\"\n        }\n    }\n}"
+				},
+				"url": {
+					"raw": "{{base}}:8080/doctor/inbound/appointments/687298118/prescription",
+					"host": [
+						"{{base}}"
+					],
+					"port": "8080",
+					"path": [
+						"doctor",
+						"inbound",
+						"appointments",
+						"687298118",
+						"prescription"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Followup/verify",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{userToken}}"
+					},
+					{
+						"key": "tenantId",
+						"value": "ABHI"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/doctor/appointment/followup/verify?appointmentDate=16/08/2022&appointmentType=IN_PERSON&clinicId=6576547&doctorId=5459627&userId=5493",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"doctor",
+						"appointment",
+						"followup",
+						"verify"
+					],
+					"query": [
+						{
+							"key": "appointmentDate",
+							"value": "16/08/2022"
+						},
+						{
+							"key": "appointmentType",
+							"value": "IN_PERSON"
+						},
+						{
+							"key": "clinicId",
+							"value": "6576547"
+						},
+						{
+							"key": "doctorId",
+							"value": "5459627"
+						},
+						{
+							"key": "userId",
+							"value": "5493"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "member_signin",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{parentLogin}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "dvs"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"svassUserId\": \"SVEMP-a96b380a-d7ad-4a3b-9a5c-68b4124e78e7\"}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/auth/employee/member/signin",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"employee",
+						"member",
+						"signin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Doctor_Clinic_Details",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/appointment/doctor/v2/mdm/details?doctorId=5459627&clinicId=6576547&consultationType=OnlineConsultation",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"appointment",
+						"doctor",
+						"v2",
+						"mdm",
+						"details"
+					],
+					"query": [
+						{
+							"key": "doctorId",
+							"value": "5459627"
+						},
+						{
+							"key": "clinicId",
+							"value": "6576547"
+						},
+						{
+							"key": "consultationType",
+							"value": "OnlineConsultation"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "HC_dev",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "sa"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Cookie",
+						"value": "JSESSIONID=7C6979E879A43F0B6E15F3AC27AB62FD"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"appName\": \"HC\",\n    \"username\": \"6360904964\",\n\n    \"type\": \"PHONE\",\n\n    \"pinValue\": \"222222\"\n\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/auth/employee/signin",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"employee",
+						"signin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "doctor Billing Cost BreakDown",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{userToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/svaas/patient/v2/doctorBillingCostBreakdown?clinicId=6576547&doctorId=5459627&type=IN_PERSON&patientId=SVEMP-8fb591e6-1b96-11ec-ac75-d3abdd530933",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"svaas",
+						"patient",
+						"v2",
+						"doctorBillingCostBreakdown"
+					],
+					"query": [
+						{
+							"key": "clinicId",
+							"value": "6576547"
+						},
+						{
+							"key": "doctorId",
+							"value": "5459627"
+						},
+						{
+							"key": "type",
+							"value": "IN_PERSON"
+						},
+						{
+							"key": "patientId",
+							"value": "SVEMP-8fb591e6-1b96-11ec-ac75-d3abdd530933"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Doc_Details_From_MDM_By_DoctorId",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/appointment/doctor/v2/mdm/details/5459627",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"appointment",
+						"doctor",
+						"v2",
+						"mdm",
+						"details",
+						"5459627"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Partner Cancel Appointment",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{partnerToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 7b3250a8-30ba-44d2-aa98-a9f1e2fe27b3"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Cookie",
+						"value": "JSESSIONID=7F38D6366F25A0DA1829B8CDE5683471; JSESSIONID=48723EAF55C7686D00AF6E705F108A96"
+					},
+					{
+						"key": "tenantId",
+						"value": "ABHI"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"data\": {\n        \"appointment_details\": {\n            \"appointment_date\": \"2022-08-09\",\n            \"appointment_status\": \"cancelled\",\n            \"appointment_type\": \"OnlineConsultation\",\n            \"cancellation_reason\": \"RAVI CANCELLED\",\n            \"cancelled_by\": \"\",\n            \"start_time\": \"07:00\",\n            \"end_time\": \"07:10\"\n        },\n        \"appointment_id\": \"286793816\",\n        \"branch_id\": \"6576547\",\n        \"doctor_id\": \"5459627\",\n        \"policy_company\": \"Aditya Birla Health Insurance\",\n        \"policy_id\": \"OPD223456\"\n    }\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8888/healthplix/doctor/add-update-appointment",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"healthplix",
+						"doctor",
+						"add-update-appointment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "upcoming_appointments",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{userToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "tenantId",
+						"value": "ABHI",
+						"type": "default",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/doctor/appointment/upcoming?pageNo&pageSize&patientId=SVEMP-8fb591e6-1b96-11ec-ac75-d3abdd530933",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"doctor",
+						"appointment",
+						"upcoming"
+					],
+					"query": [
+						{
+							"key": "pageNo",
+							"value": null
+						},
+						{
+							"key": "pageSize",
+							"value": null
+						},
+						{
+							"key": "patientId",
+							"value": "SVEMP-8fb591e6-1b96-11ec-ac75-d3abdd530933"
+						},
+						{
+							"key": "filterBy",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

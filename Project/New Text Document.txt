@@ -1,0 +1,184 @@
+TO RAISE TICKET-
+techease@mydrreddys.com
+chaitanyasai.e@drreddys.com
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+Password:
+ATBBMkXu6sF3SkSqu4kDXKqf7CAk17EBBD2B
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+Swagger link:
+http://localhost:8888/swagger-ui/#/
+http://localhost:8888/api/auth/swagger-ui/#/
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------
+QA DB CREDENTIALS
+--------------------------------------------
+Host: svaas-qa.mysql.database.azure.com
+Port: 3306
+username : opddrlqareadonlyuser@svaas-qa
+password : drl@read#user
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------
+bit bucket
+https://bitbucket.org/dashboard/repositories
+----------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+FOR ACCESS-
+devanshpatni@drreddys.com
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+PWA CREDENTIALS- dev env
+User id: 8605062661
+Password: 123456
+
+PWA CREDENTIALS- QA env
+User id: 8310378416
+Password: 123456
+User id: 7989163905
+Password: 123456
+
+PWA CREDENTIALS- stage env
+User id: 8605062661
+Password: 123456
+User id: 9538881524
+Password: 123456
+User id: 9985555281
+Password: 222222
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+HC CREDENTIALS- QA env
+User id: 9100982999
+Password: 123456
+
+HC CREDENTIALS- Local env
+Username: g.swetha@enterpi.com
+type: EMAIL
+pinValue: 222222
+appName: HC
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+SUPPORT PORTAL-
+URL- https://stage.svaas.com/app/supportpwaportal/#/login
+EMAIL- test@support.com
+PASSWORD- 123456
+
+BASIC AUTH VALUE-
+Basic 
+c3ByaW5nLXNlY3VyaXR5LW9hdXRoMi1yZWFkLXdyaXRlLWNsaWVudDpzcHJpbmctc2VjdXJpdHktb2F1dGgyLXJlYWQtd3JpdGUtY2xpZW50LXBhc3N3b3JkMTIzNA==
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+STEPS TO COMMIT CODE-
+Before making changes take pull ->stop the server -> change to a new branch and name it 
+Teams-> commit
+select the files required to be committed and keep them in the below box
+[JIRA TICKET NO.] Message regarding the changes made
+Author and committer name and email- Amrita <amritakundu@svaaswellness.com> -> commit and push
+
+Go to bitbucket-> select the service the changes that were made -> click commit from left menu and check the changes-> click pull request ->
+click create pull request from right -> select branch on left(source where changes were made) -> right side select the destnation branch to merge the changes -> 
+add reviewer -> pull request.
+
+To ensure the changes click in diff/commit
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+BASEURL POSTMAN- 
+http://localhost:8888 ---LOCAL
+https://qa.svaas.com ----QA
+https://stage.svaas.com----STAGE
+https://dev.svaas.com----DEV
+https://stage.svaas.com:7888---PRE-STAGE
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ECLIPSE PROJECT SETUP-
+eclipse ->window -> preferences ->
+
+Search installed JREs ->Add ->jre type standard vm -> browse the jdk path upto inside bin folder 
+
+->Apply -> Apply nd close
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+QA DB CREDS-
+Host:		mysql-svaas-qa.mysql.database.azure.com
+Port:		3306
+username:	readonlyuser	
+password:	drl@read#user
+
+PRE-STAGE DB CREDS-
+Host:		mysql-svaas-pre-stage.mysql.database.azure.com 
+Port:		3306
+username:	readonlyuser	
+password:	drl@read#user
+
+DEV DB CREDS-
+Host:		mysql-svaas-dev.mysql.database.azure.com
+Port:		3306
+username :	opddrlqareadonlyuser@svaas-qa   -->     	readonlyuser	
+password :	drl@read#user
+
+STAGE DB CREDS-
+Hostname:	mysql-svaas-stage.mysql.database.azure.com
+Port:		3306
+username:	readonlyuser	
+password:	drl@read#user
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+To Export data:
+open-> SQL Workbench:
+server-> export data -> select schema  -> right coerner (advanced options--> uncheck lock-table-->return;
+
+
+
+
+
+
+1. Patient login API- to get access token
+2. Copy acces token
+3. Slots API- to get slots date wise-
+	select Auth paste token value  (Note : Provide date 7days)
+4. Book appt with patient id API- to book appt, put time, date, type--> patient_id and auth-id. will generate.
+	Copy patient id,
+5. Go to the mysql- opd_insurance_abhi---> SELECT * FROM opd_appointment_abhi.tbl_appointment where id=<10809>; paste Id number.
+6. Go to the mysql- SELECT * FROM opd_insurance_abhi.tbl_bill where appointment_id=10817;
+	take copy svaas_transaction_id and svaas_order_id.
+7. Dummy payment API- to make payment -
+	in param section place  -> svaas_transaction_id
+	ib body -> svaas_order_id-> paste svass_order_id
+	change randomly-> bank_txn_id, order_id, txn_id
+	hit it.
+8. execute the -->
+	SELECT * FROM opd_appointment_abhi.tbl_appointment where id=<10817>;
+	in the appointment status it will be cahnged from pending to booked.
+From bill table,insurance_abhi get svaas order id and transaction ref id
+add update appointment- to confirm/ complete appointment by adding required info
+push econsultation url API- to add web link for online consultation using appt id
+
+
+SELECT partner_appointment_id FROM opd_appointment_abhi.tbl_appointment where id=10856;
+
+SELECT * FROM opd_appointment_abhi.tbl_appointment where id=10856;
+
+SELECT * FROM opd_appointment_abhi.tbl_appointment where id=10783;
+
+SELECT * FROM opd_appointment_abhi.tbl_appointment_schedule where appointment_id=10821;
+
+SELECT svaas_order_id FROM opd_insurance_abhi.tbl_bill where appointment_id=10856;
+
+SELECT svaas_transaction_id FROM opd_insurance_abhi.tbl_bill where appointment_id=10856;
+
+SELECT * FROM opd_insurance_abhi.tbl_bill where appointment_id=10855;
+
+SELECT * FROM opd_appointment_abhi.tbl_consultation where appointment_id=10856;
+
+SELECT * FROM opd_accounting.transaction_details where apopointment=10821;
+
+SELECT * FROM opd_user.tbl_otp where ref_id=10825;
+
+https://qa.svaas.com/api/auth/employee/signin   -->  to get total patients id
+
+
+
+
+
+
+
+
+
+
+
+
+
+

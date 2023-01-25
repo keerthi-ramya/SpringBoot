@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move element &apos;show_appointments.html&apos; to &apos;login-doctor.html&apos;&#x0D;&#x0A;- Original project: &apos;SpringBootRegistrationLogin&apos;&#x0D;&#x0A;- Destination element: &apos;login-doctor.html&apos;&#x0D;&#x0A;- Original element: &apos;show_appointments.html&apos;&#x0D;&#x0A;- Update references to refactored element" description="Move file" element1="src/main/resources/show_appointments.html" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1672813106113" target="src/main/resources/templates/login-doctor.html" units="0" version="1.0"/>
+</session>

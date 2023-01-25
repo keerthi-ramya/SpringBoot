@@ -1,0 +1,190 @@
+package resourcebooking.entity;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+
+import org.springframework.beans.factory.annotation.Value;
+
+@Entity
+@Table(name="booking")
+public class Booking {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="booking_id")
+	private Long booking_id;
+	
+	@Column(name="date")
+	private String date;
+	
+	@Column(name="patient_id")
+	private Long patient_id;
+	
+	@Column(name="patient_name")
+	private String patientname;
+	
+	@Column(name="doctor_name")
+	private String doctorname;
+
+	
+	@Column(name="doctor_id")
+	private Long doctor_id;
+	
+	@Column(name="type")
+	private String type;
+	
+	@Column(name="slots")
+	private String slots;
+	
+	@Column(name="status")
+	@Value("book")
+	private String status;
+	
+	@Column(name="specilization")
+	private String specilization;
+	
+	@Column(name="doctor_response")
+	private String doctor_response;
+	
+	public Booking() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public Booking(Long booking_id, String date, Long patient_id, String patientname, String doctorname, Long doctor_id,
+			String type, String slots, String status, String specilization) {
+		super();
+		this.booking_id = booking_id;
+		this.date = date;
+		this.patient_id = patient_id;
+		this.patientname = patientname;
+		this.doctorname = doctorname;
+		this.doctor_id = doctor_id;
+		this.type = type;
+		this.slots = slots;
+		this.status = status;
+		this.specilization = specilization;
+	}
+
+	public Long getBooking_id() {
+		return booking_id;
+	}
+
+	public void setBooking_id(Long booking_id) {
+		this.booking_id = booking_id;
+	}
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+
+	public Long getPatient_id() {
+		return patient_id;
+	}
+
+	public void setPatient_id(Long patient_id) {
+		this.patient_id = patient_id;
+	}
+
+	public Long getDoctor_id() {
+		return doctor_id;
+	}
+
+	public void setDoctor_id(Long doctor_id) {
+		this.doctor_id = doctor_id;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public String getSlots() {
+		return slots;
+	}
+
+	public void setSlots(String slots) {
+		this.slots = slots;
+	}
+
+
+
+	public String getStatus() {
+		return status;
+	}
+
+
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+
+
+	public String getPatientname() {
+		return patientname;
+	}
+
+
+
+	public void setPatientname(String patientname) {
+		this.patientname = patientname;
+	}
+
+
+
+	public String getDoctorname() {
+		return doctorname;
+	}
+
+
+
+	public void setDoctortname(String doctorname) {
+		this.doctorname = doctorname;
+	}
+
+
+
+
+
+
+
+	public String getSpecilization() {
+		return specilization;
+	}
+
+
+
+
+
+
+
+	public void setSpecilization(String specilization) {
+		this.specilization = specilization;
+	}
+
+
+
+
+
+
+
+	public void setDoctorname(String doctorname) {
+		this.doctorname = doctorname;
+	}
+	
+	
+	
+
+}

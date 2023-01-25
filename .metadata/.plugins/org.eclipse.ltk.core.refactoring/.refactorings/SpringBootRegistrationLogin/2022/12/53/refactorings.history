@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move element &apos;one.html&apos; to &apos;wrong.html&apos;&#x0D;&#x0A;- Original project: &apos;SpringBootRegistrationLogin&apos;&#x0D;&#x0A;- Destination element: &apos;wrong.html&apos;&#x0D;&#x0A;- Original element: &apos;one.html&apos;&#x0D;&#x0A;- Update references to refactored element" description="Move file" element1="src/main/resources/one.html" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1672310606112" target="src/main/resources/templates/wrong.html" units="0" version="1.0"/>
+</session>

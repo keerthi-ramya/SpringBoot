@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;resourcebooking.entity.Payment&apos; to &apos;CreditCard&apos;&#x0D;&#x0A;- Original project: &apos;SpringBootRegistrationLogin&apos;&#x0D;&#x0A;- Original element: &apos;resourcebooking.entity.Payment&apos;&#x0D;&#x0A;- Renamed element: &apos;resourcebooking.entity.CreditCard&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;Payment&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;resourcebooking.entity{Payment.java[Payment" matchStrategy="1" name="CreditCard" qualified="false" references="true" similarDeclarations="false" stamp="1674123977985" textual="false" version="1.0"/>
+</session>

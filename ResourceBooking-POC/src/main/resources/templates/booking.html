@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <title>Home Page</title>
+  </head>
+  <body>
+  	<nav class="navbar navbar-dark bg-dark">
+			<div class="card-header">
+				<ul class="nav nav-tabs card-header-tabs">
+					<li>
+						<nav class="navbar navbar-light bg-light">
+							<a class="navbar-brand"> <img
+								src="PWA - Product/Design/Iconly/Two-tone/193667082_100167458983905_8845021824154656501_n 1.jpg"
+								width="25" height="25" alt="">
+							</a>
+						</nav>
+					
+			<li class="nav-item"><a class="nav-link" href="">Welcome <b>[[${#request.userPrincipal.principal.fullName}]]</b></a>
+			</li>
+			<li class="nav-item"><a class="nav-link" th:href="@{/add-doctor}">addDoctor</a></li>
+			<li class="nav-item"><a class="nav-link" th:href="@{/add-patient}">addPatient</a></li>
+			<li class="nav-item"><a class="nav-link" th:href="@{/logout}">signout</a>
+			</li>
+				</ul>
+
+			</div>
+		</nav>
+	<div class="card text-center">
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="card">
+					<div class="card-body">
+						<h5 class="card-title">Doctor-List</h5>
+						<div style="height: 300px; overflow: auto; ">
+						<table class="table table-striped table-bordered" style="height: 400px" >
+							<thead class="thead-dark" style="position: sticky; top: 0; z-index: 1; ">
+								<tr>
+									<th>User ID</th>
+									<th>Name</th>
+									<th>Specialization</th>
+									<th>Action</th>
+								</tr>
+							</thead>
+							
+							<tbody>
+								<tr th:each="doctor: ${listDoctors}">
+									<td th:text="${doctor.id}">User ID</td>
+									<td th:text="${doctor.firstname}">First Name</td>
+									<td th:text="${doctor.Specialization}">Specialization</td>
+									<td><a th:href="@{/edit-doctor/{id}(id=${doctor.id})}">
+									<i class='far fa-edit'></i></a></td>
+								</tr>
+							</tbody>
+						</table>
+						</div>
+					
+					<!-- <a th:href="@{/add-doctor}" class="btn btn-primary">Add Doctor</a>  -->
+					</div>
+				</div>
+			</div>
+		
+		<div class="col-sm-6">
+			<div class="card">
+				<div class="card-body">
+					<h5 class="card-title">Patient-List</h5>
+					<div style="overflow: auto; height: 300px !important; ">
+					<table class="table table-striped table-bordered" style="height: 400px">
+					
+			<thead class="thead-dark" style="position: sticky; top: 0; z-index: 1; " >
+				<tr>
+					<th>User ID</th>
+					<th>First Name</th>
+					<th>E-mail</th>
+					<th>Action</th>
+					
+				</tr>
+			</thead></div>
+			<tbody>
+				<tr th:each="patient: ${listPatients}">
+					<td th:text="${patient.id}">User ID</td>
+					<td th:text="${patient.firstname}">First Name</td>
+					<td th:text="${patient.email}">E-mail</td>
+					<td><i class='far fa-edit'></i></td>
+					
+
+					
+				</tr>
+			</tbody>
+		</table>
+		<a th:href="@{/add-patient}" class="btn btn-primary">Add Patient</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</body>
+</html>

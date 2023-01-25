@@ -1,0 +1,1175 @@
+{
+	"info": {
+		"_postman_id": "155ad4bd-9ad2-4a9e-a210-2d3afc81b36a",
+		"name": "Accounting",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23431959"
+	},
+	"item": [
+		{
+			"name": "Consumed by Platform",
+			"item": [
+				{
+					"name": "Add Doctor",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"bankDetail\": {\n    \"accountHolderName\": \"IDEA CLINICS\",\n    \"accountNo\": \"69793020583\",\n    \"bankBranchName\": \"MADHAPUR\",\n    \"bankName\": \"HDFC BANK\",\n    \"ifscCode\": \"HDFC00024\"\n  },\n  \"gstNo\": \"\",\n  \"healthplixDoctorId\": \"4672251\",\n  \"name\": \"SUDHAKAR RAO\",\n  \"panCardNumber\": \"NBKGL6951G\",\n  \"specialization\": [\n    \"Endocrinologist/Diabetologist\"\n  ],\n  \"svaasDoctorId\": \"SVDOCT-8facce2d-29d9-499d-9115-f44b0213e0c7\",\n  \"tanNumber\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://stage.svaas.com/api/accounting/add-doctor",
+							"protocol": "https",
+							"host": [
+								"stage",
+								"svaas",
+								"com"
+							],
+							"path": [
+								"api",
+								"accounting",
+								"add-doctor"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Insurance",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    {\n        \"customerTransactionType\": \"Static\",\n        \"discountPercentageInsuranceDiagnostic\": 10,\n        \"gstNo\": \"27AAACC1206D1ZG\",\n        \"insurancePartnerID\": \"SVADIT-ssdfwse34g5654w-3333-7777-c04v8555\",\n        \"name\": \"BIRLA TEST INSURANCE\"\n    },\n    {\n        \"customerTransactionType\": \"Static\",\n        \"discountPercentageInsuranceDiagnostic\": 10,\n        \"gst_no\": \"27AABCU62618LTT\",\n        \"insurancePartnerID\": \"SVADIT-ssdfwse34g5654w-3cft-666z-c04v8507\",\n        \"name\": \"Bharti AXA Life Insurance Company\"\n    },\n    {\n        \"customerTransactionType\": \"Static\",\n        \"discountPercentageInsuranceDiagnostic\": 10,\n        \"gst_no\": \"27AABCU6261T7QQ\",\n        \"insurancePartnerID\": \"SVADIT-ssdfwse34g5654w-3cft-666z-c04v8508\",\n        \"name\": \"PNB MetLife India Insurance Company\"\n    }\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://stage.svaas.com/api/accounting/add-insurance",
+							"protocol": "https",
+							"host": [
+								"stage",
+								"svaas",
+								"com"
+							],
+							"path": [
+								"api",
+								"accounting",
+								"add-insurance"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Diagnostic",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n  {\r\n    \"aggregatorCommissionPercentage\": 10,\r\n    \"aggregatorId\": \"SVAGGR-u645090-03c0-888t-b112-91842676ppiu\",\r\n    \"aggregatorName\": \"Call 4 Health\",\r\n    \"bankDetail\": {\r\n      \"accountHolderName\": \"Apollo Diagnostics Kolkata\",\r\n      \"accountNo\": \"3325202222101322\",\r\n      \"bankBranchName\": \"College Street\",\r\n      \"bankName\": \"PNB\",\r\n      \"ifscCode\": \"PUNB0058400\"\r\n    },\r\n    \"diagnosticId\": \"SVDIAGLAB-ssdfwt78tbh87ew4w-3cft-PO44-112\",\r\n    \"gstNo\": \"05AABCU9603R1ZT\",\r\n    \"name\": \"Apollo Diagnostics\",\r\n    \"panCardNumber\": \"ALWPG5809L\",\r\n    \"tanNumber\": \"\"\r\n  },\r\n{\r\n    \"aggregatorCommissionPercentage\": 0,\r\n    \"aggregatorId\": \"\",\r\n    \"aggregatorName\": \"\",\r\n    \"bankDetail\": {\r\n      \"accountHolderName\": \"Serum Analysis Centre Kestopur\",\r\n      \"accountNo\": \"3625202222101724\",\r\n      \"bankBranchName\": \"KESTOPUR ROAD\",\r\n      \"bankName\": \"ICIC\",\r\n      \"ifscCode\": \"ICIC0003307\"\r\n    },\r\n    \"diagnosticId\": \"SVDIAGLAB-ssdfwt78tbh87ew4w-3cft-PO44-113\",\r\n    \"gstNo\": \"05AABCU9605TRQA\",\r\n    \"name\": \"Serum Analysis Centre\",\r\n    \"panCardNumber\": \"ACWPG5801M\",\r\n    \"tanNumber\": \"\"\r\n  }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://stage.svaas.com/api/accounting/add-diagnostics",
+							"protocol": "https",
+							"host": [
+								"stage",
+								"svaas",
+								"com"
+							],
+							"path": [
+								"api",
+								"accounting",
+								"add-diagnostics"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Test",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"aggregatorCommissionPercentage\": 10,\r\n        \"aggregatorId\": \"SVAGGR-u645090-03c0-888t-b112-91842676ppiu\",\r\n        \"aggregatorName\": \"Call 4 Health\",\r\n        \"cityId\": \"SVCITYKOLK-ssdfwse34g5654w-3cft-756y-uX0Kn1\",\r\n        \"cityName\": \"Kolkata\",\r\n        \"diagnosticId\": \"SVDIAGLAB-ssdfwt78tbh87ew4w-3cft-PO44-112\",\r\n        \"diagnosticName\": \"Apollo Diagnostics\",\r\n        \"discountFromLabPercentage\": 10,\r\n        \"itemTaxPreferences\": [\r\n            {\r\n                \"tax_id\": \"439530000000012111\",\r\n                \"tax_specification\": \"intra\"\r\n            },\r\n            {\r\n                \"tax_id\": \"439530000000012099\",\r\n                \"tax_specification\": \"inter\"\r\n            }\r\n        ],\r\n        \"mrp\": 200,\r\n        \"offeredPrice\": 170,\r\n        \"priceToDrl\": 170,\r\n        \"testId\": \"SVTEST-008c5d30-d49c-on8c67-a0c2-shsFgRS6pJRbYPV7u\",\r\n        \"testName\": \"X-ray-HSG\",\r\n        \"vendorTestId\": \"DRLAP112001\",\r\n        \"vendorTestName\": \"X-ray-HSG\"\r\n    },\r\n    {\r\n        \"aggregatorCommissionPercentage\": 10,\r\n        \"aggregatorId\": \"SVAGGR-u645090-03c0-888t-b112-91842676ppiu\",\r\n        \"aggregatorName\": \"Call 4 Health\",\r\n        \"cityId\": \"SVCITYKOLK-ssdfwse34g5654w-3cft-756y-uX0Kn1\",\r\n        \"cityName\": \"Kolkata\",\r\n        \"diagnosticId\": \"SVDIAGLAB-ssdfwt78tbh87ew4w-3cft-PO44-112\",\r\n        \"diagnosticName\": \"Apollo Diagnostics\",\r\n        \"discountFromLabPercentage\": 10,\r\n        \"itemTaxPreferences\": [\r\n            {\r\n                \"tax_id\": \"439530000000012111\",\r\n                \"tax_specification\": \"intra\"\r\n            },\r\n            {\r\n                \"tax_id\": \"439530000000012099\",\r\n                \"tax_specification\": \"inter\"\r\n            }\r\n        ],\r\n        \"mrp\": 266,\r\n        \"offeredPrice\": 250,\r\n        \"priceToDrl\": 250,\r\n        \"testId\": \"SVTEST-008c5d30-d49c-on8c67-a0c2-quxI8JiZpB37OwBRb\",\r\n        \"testName\": \"RBS\",\r\n        \"vendorTestId\": \"DRLAP112002\",\r\n        \"vendorTestName\": \"RBS\"\r\n    },\r\n    {\r\n        \"aggregatorCommissionPercentage\": 0,\r\n        \"aggregatorId\": \"\",\r\n        \"aggregatorName\": \"\",\r\n        \"cityId\": \"SVCITYKOLK-ssdfwse34g5654w-3cft-756y-uX0Kn1\",\r\n        \"cityName\": \"Kolkata\",\r\n        \"diagnosticId\": \"SVDIAGLAB-ssdfwt78tbh87ew4w-3cft-PO44-113\",\r\n        \"diagnosticName\": \"Serum Analysis Centre\",\r\n        \"discountFromLabPercentage\": 10,\r\n        \"itemTaxPreferences\": [\r\n            {\r\n                \"tax_id\": \"439530000000012111\",\r\n                \"tax_specification\": \"intra\"\r\n            },\r\n            {\r\n                \"tax_id\": \"439530000000012099\",\r\n                \"tax_specification\": \"inter\"\r\n            }\r\n        ],\r\n        \"mrp\": 520,\r\n        \"offeredPrice\": 450,\r\n        \"priceToDrl\": 450,\r\n        \"testId\": \"SVTEST-008c5d30-d49c-on8c67-a0c2-yQjRQoV9VN7mKIwov\",\r\n        \"testName\": \"Amylase Test\",\r\n        \"vendorTestId\": \"DRLSAC112001\",\r\n        \"vendorTestName\": \"Amylase Test\"\r\n    },\r\n    {\r\n        \"aggregatorCommissionPercentage\": 0,\r\n        \"aggregatorId\": \"\",\r\n        \"aggregatorName\": \"\",\r\n        \"cityId\": \"SVCITYKOLK-ssdfwse34g5654w-3cft-756y-uX0Kn1\",\r\n        \"cityName\": \"Kolkata\",\r\n        \"diagnosticId\": \"SVDIAGLAB-ssdfwt78tbh87ew4w-3cft-PO44-113\",\r\n        \"diagnosticName\": \"Serum Analysis Centre\",\r\n        \"discountFromLabPercentage\": 10,\r\n        \"itemTaxPreferences\": [\r\n            {\r\n                \"tax_id\": \"439530000000012111\",\r\n                \"tax_specification\": \"intra\"\r\n            },\r\n            {\r\n                \"tax_id\": \"439530000000012099\",\r\n                \"tax_specification\": \"inter\"\r\n            }\r\n        ],\r\n        \"mrp\": 200,\r\n        \"offeredPrice\": 150,\r\n        \"priceToDrl\": 150,\r\n        \"testId\": \"SVTEST-008c5d30-d49c-on8c67-a0c2-c10DuMTSZDm2JySX2\",\r\n        \"testName\": \"Blood Group\",\r\n        \"vendorTestId\": \"DRLSAC112002\",\r\n        \"vendorTestName\": \"Blood Group\"\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://stage.svaas.com/api/accounting/add-tests",
+							"protocol": "https",
+							"host": [
+								"stage",
+								"svaas",
+								"com"
+							],
+							"path": [
+								"api",
+								"accounting",
+								"add-tests"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Test Catalogue",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n  {\r\n    \"insurancePartnerID\": \"SVADIT-ssdfwse34g5654w-3333-7777-c04v8555\",\r\n    \"priceTests\": [\r\n      {\r\n        \"aggregatorId\": \"SVAGGR-u645090-03c0-888t-b112-91842676ppiu\",\r\n        \"aggregatorName\": \"Call 4 Health\",\r\n        \"cataloguePrice\": 0,\r\n        \"cityId\": \"SVCITYKOLK-ssdfwse34g5654w-3cft-756y-uX0Kn1\",\r\n        \"cityName\": \"Kolkata\",\r\n        \"diagnosticId\": \"SVDIAGLAB-ssdfwt78tbh87ew4w-3cft-PO44-112\",\r\n        \"diagnosticName\": \"Apollo Diagnostics\",\r\n        \"discountToInsurance\": 10,\r\n        \"mrp\": 200,\r\n        \"testId\": \"SVTEST-008c5d30-d49c-on8c67-a0c2-shsFgRS6pJRbYPV7u\",\r\n        \"testName\": \"X-ray-HSG\"\r\n      },\r\n      {\r\n       \"aggregatorId\": \"SVAGGR-u645090-03c0-888t-b112-91842676ppiu\",\r\n        \"aggregatorName\": \"Apollo Diagnostics\",\r\n        \"cataloguePrice\": 0,\r\n        \"cityId\": \"SVCITYKOLK-ssdfwse34g5654w-3cft-756y-uX0Kn1\",\r\n        \"cityName\": \"Kolkata\",\r\n        \"diagnosticId\": \"SVDIAGLAB-ssdfwt78tbh87ew4w-3cft-PO44-112\",\r\n        \"diagnosticName\": \"Apollo Diagnostics\",\r\n        \"discountToInsurance\": 10,\r\n        \"mrp\": 266,\r\n        \"testId\": \"SVTEST-008c5d30-d49c-on8c67-a0c2-quxI8JiZpB37OwBRb\",\r\n        \"testName\": \"RBS\"\r\n      }\r\n    ]\r\n  }\r\n\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://stage.svaas.com/api/accounting/add-test-catalogue",
+							"protocol": "https",
+							"host": [
+								"stage",
+								"svaas",
+								"com"
+							],
+							"path": [
+								"api",
+								"accounting",
+								"add-test-catalogue"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Pharmacy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"bankDetail\": {\r\n            \"accountHolderName\": \"Emami Frank Ross Ltd.\",\r\n            \"accountNo\": \"36230988887676\",\r\n            \"bankBranchName\": \"KALNA\",\r\n            \"bankName\": \"BOB\",\r\n            \"ifscCode\": \"BARB0KALNAX\"\r\n        },\r\n        \"branchId\": \"SVPHARBRAN-98dgfeh-f0989tf-345rfe-f111po\",\r\n        \"branchName\": \"Emami Frank Ross Ltd.\",\r\n        \"cityId\": \"SVCITYHYDE-ssdfwse34g5654w-3cft-756y-v9988w\",\r\n        \"cityName\": \"BURDWAN\",\r\n        \"fulfilmentType\": \"Online\",\r\n        \"gstNo\": \"29AAACC1206D2ZB\",\r\n        \"panCardNumber\": \"AAAPZ1234C\",\r\n        \"pharmacyId\": \"SVPHAR-8758feh-e457f-345rfe-f48787poiu\",\r\n        \"pharmacyName\": \"Frank Ross Pharmacy\",\r\n        \"pharmacyType\": \"Chain\",\r\n        \"stateCode\": \"WB\",\r\n        \"stateId\": \"IND001005\",\r\n        \"stateName\": \"West Bengal\",\r\n        \"tanNumber\": \"\"\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://stage.svaas.com/api/accounting/add-pharmacy",
+							"protocol": "https",
+							"host": [
+								"stage",
+								"svaas",
+								"com"
+							],
+							"path": [
+								"api",
+								"accounting",
+								"add-pharmacy"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Services",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n  {\n    \"branchId\": \"1176521\",\n    \"branchName\": \"CMC Mumbai\",\n    \"mrp\": 700,\n    \"priceToDrl\": 500,\n    \"serviceName\": \"consultation\",\n    \"svaasDoctorId\": \"SVDOCT-ju645090-03c0-8uht-b952-94ae11c11e11\",\n    \"doctorName\": \"Dr.Avinash Kumar\",\n     \"commissionPercentage\": 10\n  },{\n    \"branchId\": \"1176521\",\n    \"branchName\": \"CMC Mumbai\",\n    \"mrp\": 550,\n    \"priceToDrl\": 380,\n    \"serviceName\": \"e-consultation\",\n    \"svaasDoctorId\": \"SVDOCT-ju645090-03c0-8uht-b952-94ae11c11e11\",\n     \"doctorName\": \"Dr.Avinash Kumar\",\n     \"commissionPercentage\": 10\n  },{\n    \"branchId\": \"1176521\",\n    \"branchName\": \"CMC Mumbai\",\n    \"mrp\": 490,\n    \"priceToDrl\": 440,\n    \"serviceName\": \"follow-up\",\n    \"svaasDoctorId\": \"SVDOCT-ju645090-03c0-8uht-b952-94ae11c11e11\",\n     \"doctorName\": \"Dr.Avinash Kumar\",\n     \"commissionPercentage\": 10\n  },{\n    \"branchId\": \"1176521\",\n    \"branchName\": \"CMC Mumbai\",\n    \"mrp\": 380,\n    \"priceToDrl\": 310,\n    \"serviceName\": \"e-follow-up\",\n    \"svaasDoctorId\": \"SVDOCT-ju645090-03c0-8uht-b952-94ae11c11e11\",\n     \"doctorName\": \"Dr.Avinash Kumar\",\n     \"commissionPercentage\": 10\n  }\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://stage.svaas.com/api/accounting/add-services",
+							"protocol": "https",
+							"host": [
+								"stage",
+								"svaas",
+								"com"
+							],
+							"path": [
+								"api",
+								"accounting",
+								"add-services"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Catalogue",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"insurancePartnerID\": \"SVICIC-ssdfwse34g5654w-3cft-756y-c35fi8\",\r\n        \"priceItems\": [\r\n            {\r\n                \"branchId\": \"SVCLIN-a6e98494-c86c-11eb-8468-6045bd7243ce\",\r\n                \"cataloguePrice\": 180.0,\r\n                \"serviceName\": \"e-follow-up\",\r\n                \"svaasDoctorId\": \"SVDOCT-aae31edb-07eb-4639-a706-f669b9a8d4aa\"\r\n            }\r\n        ]\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://stage.svaas.com/api/accounting/add-catalogue",
+							"protocol": "https",
+							"host": [
+								"stage",
+								"svaas",
+								"com"
+							],
+							"path": [
+								"api",
+								"accounting",
+								"add-catalogue"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change Status Insurance",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "https://stage.svaas.com/api/accounting/change-status-insurance?insurancePartnerID=SVADIT-ssdfwse34g5654w-3cft-666z-c04v8506&isActive=true",
+							"protocol": "https",
+							"host": [
+								"stage",
+								"svaas",
+								"com"
+							],
+							"path": [
+								"api",
+								"accounting",
+								"change-status-insurance"
+							],
+							"query": [
+								{
+									"key": "insurancePartnerID",
+									"value": "SVADIT-ssdfwse34g5654w-3cft-666z-c04v8506"
+								},
+								{
+									"key": "isActive",
+									"value": "true",
+									"description": "true|false"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change Status Catalogue",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "https://stage.svaas.com/api/accounting/change-status-catalogue?insurancePartnerID=SVADIT-ssdfwse34g5654w-3cft-666z-c04v8506&isActive=true",
+							"protocol": "https",
+							"host": [
+								"stage",
+								"svaas",
+								"com"
+							],
+							"path": [
+								"api",
+								"accounting",
+								"change-status-catalogue"
+							],
+							"query": [
+								{
+									"key": "insurancePartnerID",
+									"value": "SVADIT-ssdfwse34g5654w-3cft-666z-c04v8506"
+								},
+								{
+									"key": "isActive",
+									"value": "true",
+									"description": "true|false"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change Status Doctor",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "https://stage.svaas.com/api/accounting/change-status-doctor?isActive=true&svaasDoctorId=SVDOCT-ju645090-03c0-8uht-b952-94ae11c11e11",
+							"protocol": "https",
+							"host": [
+								"stage",
+								"svaas",
+								"com"
+							],
+							"path": [
+								"api",
+								"accounting",
+								"change-status-doctor"
+							],
+							"query": [
+								{
+									"key": "isActive",
+									"value": "true",
+									"description": "true|false"
+								},
+								{
+									"key": "svaasDoctorId",
+									"value": "SVDOCT-ju645090-03c0-8uht-b952-94ae11c11e11"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change Status Service",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "https://stage.svaas.com/api/accounting/change-status-service?branchId=1176521&isActive=false&serviceName=consultation&svaasDoctorId=SVDOCT-ju645090-03c0-8uht-b952-94ae11c11e11",
+							"protocol": "https",
+							"host": [
+								"stage",
+								"svaas",
+								"com"
+							],
+							"path": [
+								"api",
+								"accounting",
+								"change-status-service"
+							],
+							"query": [
+								{
+									"key": "branchId",
+									"value": "1176521"
+								},
+								{
+									"key": "isActive",
+									"value": "false",
+									"description": "true|false"
+								},
+								{
+									"key": "serviceName",
+									"value": "consultation"
+								},
+								{
+									"key": "svaasDoctorId",
+									"value": "SVDOCT-ju645090-03c0-8uht-b952-94ae11c11e11"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change Status Diagnostic",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "https://stage.svaas.com/api/accounting/change-status-diagnostic?diagnosticId=SVDIAGLAB-ssdfwt78tbh87ew4w-3cft-PO44-112&aggregatorId=SVAGGR-u645090-03c0-888t-b112-91842676ppiu&isActive=false",
+							"protocol": "https",
+							"host": [
+								"stage",
+								"svaas",
+								"com"
+							],
+							"path": [
+								"api",
+								"accounting",
+								"change-status-diagnostic"
+							],
+							"query": [
+								{
+									"key": "diagnosticId",
+									"value": "SVDIAGLAB-ssdfwt78tbh87ew4w-3cft-PO44-112"
+								},
+								{
+									"key": "aggregatorId",
+									"value": "SVAGGR-u645090-03c0-888t-b112-91842676ppiu"
+								},
+								{
+									"key": "isActive",
+									"value": "false",
+									"description": "true|false"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change Status Pharmacy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "https://stage.svaas.com/api/accounting/change-status-pharmacy?isActive=false&branchId=SVPHARBRAN-98dgfeh-f0989tf-345rfe-f111po&pharmacyId=SVPHAR-8758feh-e457f-345rfe-f48787poiu",
+							"protocol": "https",
+							"host": [
+								"stage",
+								"svaas",
+								"com"
+							],
+							"path": [
+								"api",
+								"accounting",
+								"change-status-pharmacy"
+							],
+							"query": [
+								{
+									"key": "isActive",
+									"value": "false",
+									"description": "true|false"
+								},
+								{
+									"key": "branchId",
+									"value": "SVPHARBRAN-98dgfeh-f0989tf-345rfe-f111po"
+								},
+								{
+									"key": "pharmacyId",
+									"value": "SVPHAR-8758feh-e457f-345rfe-f48787poiu"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change Status Test",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "https://stage.svaas.com/api/accounting/change-status-test?aggregatorId=SVAGGR-u645090-03c0-888t-b112-91842676ppiu&cityId=SVCITYKOLK-ssdfwse34g5654w-3cft-756y-uX0Kn1&diagnosticId=SVDIAGLAB-ssdfwt78tbh87ew4w-3cft-PO44-112&isActive=true&testId=SVTEST-008c5d30-d49c-on8c67-a0c2-shsFgRS6pJRbYPV7u",
+							"protocol": "https",
+							"host": [
+								"stage",
+								"svaas",
+								"com"
+							],
+							"path": [
+								"api",
+								"accounting",
+								"change-status-test"
+							],
+							"query": [
+								{
+									"key": "aggregatorId",
+									"value": "SVAGGR-u645090-03c0-888t-b112-91842676ppiu"
+								},
+								{
+									"key": "cityId",
+									"value": "SVCITYKOLK-ssdfwse34g5654w-3cft-756y-uX0Kn1"
+								},
+								{
+									"key": "diagnosticId",
+									"value": "SVDIAGLAB-ssdfwt78tbh87ew4w-3cft-PO44-112"
+								},
+								{
+									"key": "isActive",
+									"value": "true",
+									"description": "true|false"
+								},
+								{
+									"key": "testId",
+									"value": "SVTEST-008c5d30-d49c-on8c67-a0c2-shsFgRS6pJRbYPV7u"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Payment",
+			"item": [
+				{
+					"name": "Create Payment Link",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "PAYMENT-TOKEN",
+								"value": "Basic JXZ6MkZRJHZjckhXMydKZkF7QmZAdV5nRGI4cGJTLndoQTJ4WTQ5VEgrZEUneEBtYzU8c1YrayVoeF8mbT40XVRnYH4qJl4pQDtVNEVWKSw=",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://qa.svaas.com/api/accounting/payment/create-payment-link?orderId=ORD123",
+							"protocol": "https",
+							"host": [
+								"qa",
+								"svaas",
+								"com"
+							],
+							"path": [
+								"api",
+								"accounting",
+								"payment",
+								"create-payment-link"
+							],
+							"query": [
+								{
+									"key": "orderId",
+									"value": "ORD123"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Expire Payment Link",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "PAYMENT-TOKEN",
+								"value": "Basic JXZ6MkZRJHZjckhXMydKZkF7QmZAdV5nRGI4cGJTLndoQTJ4WTQ5VEgrZEUneEBtYzU8c1YrayVoeF8mbT40XVRnYH4qJl4pQDtVNEVWKSw=",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://stage.svaas.com/api/accounting/payment/expire-payment-link?linkId=113975",
+							"protocol": "https",
+							"host": [
+								"stage",
+								"svaas",
+								"com"
+							],
+							"path": [
+								"api",
+								"accounting",
+								"payment",
+								"expire-payment-link"
+							],
+							"query": [
+								{
+									"key": "linkId",
+									"value": "113975"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Payment Link",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "PAYMENT-TOKEN",
+								"value": "Basic JXZ6MkZRJHZjckhXMydKZkF7QmZAdV5nRGI4cGJTLndoQTJ4WTQ5VEgrZEUneEBtYzU8c1YrayVoeF8mbT40XVRnYH4qJl4pQDtVNEVWKSw=",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://stage.svaas.com/api/accounting/payment/payment-link?orderId=B-HX3006-1234-3497489575",
+							"protocol": "https",
+							"host": [
+								"stage",
+								"svaas",
+								"com"
+							],
+							"path": [
+								"api",
+								"accounting",
+								"payment",
+								"payment-link"
+							],
+							"query": [
+								{
+									"key": "orderId",
+									"value": "B-HX3006-1234-3497489575"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Payment Transaction Status Link",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "PAYMENT-TOKEN",
+								"value": "Basic JXZ6MkZRJHZjckhXMydKZkF7QmZAdV5nRGI4cGJTLndoQTJ4WTQ5VEgrZEUneEBtYzU8c1YrayVoeF8mbT40XVRnYH4qJl4pQDtVNEVWKSw=",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://stage.svaas.com/api/accounting/payment/payment-link-transaction-status?linkId=113972",
+							"protocol": "https",
+							"host": [
+								"stage",
+								"svaas",
+								"com"
+							],
+							"path": [
+								"api",
+								"accounting",
+								"payment",
+								"payment-link-transaction-status"
+							],
+							"query": [
+								{
+									"key": "linkId",
+									"value": "113972"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refund Status",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "PAYMENT-TOKEN",
+								"value": "Basic JXZ6MkZRJHZjckhXMydKZkF7QmZAdV5nRGI4cGJTLndoQTJ4WTQ5VEgrZEUneEBtYzU8c1YrayVoeF8mbT40XVRnYH4qJl4pQDtVNEVWKSw=",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://stage.svaas.com/api/accounting/payment/refund-status?orderId=SVORDAPT-771ec3c1-a258-4561-8b39-5e0df92a4d7c&refundId=REFSVORDAPT-771ec3c1-a258-4561-8b39-5e0df92a4d7c",
+							"protocol": "https",
+							"host": [
+								"stage",
+								"svaas",
+								"com"
+							],
+							"path": [
+								"api",
+								"accounting",
+								"payment",
+								"refund-status"
+							],
+							"query": [
+								{
+									"key": "orderId",
+									"value": "SVORDAPT-771ec3c1-a258-4561-8b39-5e0df92a4d7c"
+								},
+								{
+									"key": "refundId",
+									"value": "REFSVORDAPT-771ec3c1-a258-4561-8b39-5e0df92a4d7c"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refund",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "PAYMENT-TOKEN",
+								"value": "Basic JXZ6MkZRJHZjckhXMydKZkF7QmZAdV5nRGI4cGJTLndoQTJ4WTQ5VEgrZEUneEBtYzU8c1YrayVoeF8mbT40XVRnYH4qJl4pQDtVNEVWKSw=",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://stage.svaas.com/api/accounting/payment/refund?orderId=SVORDAPT-771ec3c1-a258-4561-8b39-5e0df92a4d7c&refundAmount=200",
+							"protocol": "https",
+							"host": [
+								"stage",
+								"svaas",
+								"com"
+							],
+							"path": [
+								"api",
+								"accounting",
+								"payment",
+								"refund"
+							],
+							"query": [
+								{
+									"key": "orderId",
+									"value": "SVORDAPT-771ec3c1-a258-4561-8b39-5e0df92a4d7c"
+								},
+								{
+									"key": "refundAmount",
+									"value": "200"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "WebLink Status",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "PAYMENT-TOKEN",
+								"value": "Basic JXZ6MkZRJHZjckhXMydKZkF7QmZAdV5nRGI4cGJTLndoQTJ4WTQ5VEgrZEUneEBtYzU8c1YrayVoeF8mbT40XVRnYH4qJl4pQDtVNEVWKSw=",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://stage.svaas.com/api/accounting/payment/status-payment-link?linkId=113972",
+							"protocol": "https",
+							"host": [
+								"stage",
+								"svaas",
+								"com"
+							],
+							"path": [
+								"api",
+								"accounting",
+								"payment",
+								"status-payment-link"
+							],
+							"query": [
+								{
+									"key": "linkId",
+									"value": "113972"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch Trasaction Link",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://stage.svaas.com/api/accounting/payment/fetch-transaction-link?linkId=115719",
+							"protocol": "https",
+							"host": [
+								"stage",
+								"svaas",
+								"com"
+							],
+							"path": [
+								"api",
+								"accounting",
+								"payment",
+								"fetch-transaction-link"
+							],
+							"query": [
+								{
+									"key": "linkId",
+									"value": "115719"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Zoho",
+			"item": [
+				{
+					"name": "Auth-Token",
+					"item": [
+						{
+							"name": "Zoho signin",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "x"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"clientKey\": \"zoho-client\",\n    \"clientSecret\": \"4U/Q2tYjd`=6CX*_\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8888/api/auth/zoho/signin",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8888",
+									"path": [
+										"api",
+										"auth",
+										"zoho",
+										"signin"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get auth token",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"clientKey\": \"zoho-client\",\n    \"clientSecret\": \"4U/Q2tYjd`=6CX*_\",\n    \"refresh_token\": \"c15a6a65-7705-4c08-b256-e55c6fbfe073\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://stage.svaas.com/api/auth/zoho/generate/token",
+									"protocol": "https",
+									"host": [
+										"stage",
+										"svaas",
+										"com"
+									],
+									"path": [
+										"api",
+										"auth",
+										"zoho",
+										"generate",
+										"token"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "MIS",
+					"item": [
+						{
+							"name": "Get mis data",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{authorization}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://stage.svaas.com/api/accounting/mis?currentPage=1&noOfOrder=2",
+									"protocol": "https",
+									"host": [
+										"stage",
+										"svaas",
+										"com"
+									],
+									"path": [
+										"api",
+										"accounting",
+										"mis"
+									],
+									"query": [
+										{
+											"key": "status",
+											"value": "1",
+											"disabled": true
+										},
+										{
+											"key": "currentPage",
+											"value": "1"
+										},
+										{
+											"key": "noOfOrder",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Post status",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{authorization}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "[\n  {\n    \"accountingStatusId\": 1,\n    \"commissionAmountSettle\": 0,\n    \"commissionGSTAmountSettle\": 0,\n    \"commissionGSTRateSettle\": 0,\n    \"commissionPercentageSettle\": 0,\n    \"convenienceChargeSettle\": 0,\n    \"customerInvoiceNumber\": \"string\",\n    \"customerTransactionTypeSettle\": \"string\",\n    \"deliveryChargeSettle\": 0,\n    \"diagnosticServiceChargeSettle\": 0,\n    \"marketingFeesAmountSettle\": 0,\n    \"marketingFeesGSTAmountSettle\": 0,\n    \"marketingFeesGSTRateSettle\": 0,\n    \"marketingFeesPercentageSettle\": 0,\n    \"netPayoutAmount\": 0,\n    \"paidByConsumerSettle\": 0,\n    \"paidByInsuranceSettle\": 0,\n    \"paymentGatewayTransactionIdSettle\": \"string\",\n    \"pgChargesSettle\": 0,\n    \"pgGstRateSettle\": 0,\n    \"pgPercentageSettle\": \"string\",\n    \"platformFeeAmountSettle\": 0,\n    \"platformFeePercentageSettle\": 0,\n    \"platformFeesGSTAmountSettle\": 0,\n    \"platformFeesGSTRateSettle\": 0,\n    \"priceInfoSettled\": [\n      {\n        \"aggregatorCommissionAmountSettle\": 0,\n        \"aggregatorCommissionAmountZohoDatabase\": 0,\n        \"aggregatorCommissionPercentageSettle\": 0,\n        \"aggregatorCommissionPercentageZohoDatabase\": 0,\n        \"cataloguePricePlatformSettle\": 0,\n        \"cataloguePriceSettle\": 0,\n        \"discountFromLabPercentageZohoDatabase\": 0,\n        \"discountPriceSettle\": 0,\n        \"discountToInsuranceSettle\": 0,\n        \"gstAmountOnCatalogueSettle\": 0,\n        \"gstAmountPriceToDrlSettle\": 0,\n        \"gstAmountSettle\": 0,\n        \"gstAmountSettled\": \"string\",\n        \"gstAmountToConsumerSettle\": 0,\n        \"gstAmountToInsuranceSettle\": 0,\n        \"gstRateForInsuranceSettle\": \"string\",\n        \"gstRateForVendorSettle\": \"string\",\n        \"gstRateToConsumerSettle\": \"string\",\n        \"mrpPlatformSettle\": 0,\n        \"mrpSettle\": 0,\n        \"offeredPricePlatformSettle\": 0,\n        \"offeredPriceSettle\": 0,\n        \"pharmacyDiscountPercentageMasterSettle\": 0,\n        \"pharmacyDiscountPercentageSettle\": 0,\n        \"priceBeforeGstSettle\": 0,\n        \"priceId\": 1,\n        \"priceToDrlPlatformSettle\": 0,\n        \"priceToDrlSettle\": 0,\n        \"ratioSettled\": \"string\",\n        \"totalSettle\": 0,\n        \"unitGstSettled\": \"string\",\n        \"unitValueSettled\": \"string\",\n        \"valueSettled\": \"string\"\n      }\n    ],\n    \"refundAmountSettle\": 0,\n    \"serviceChargeGstRateSettle\": \"string\",\n    \"serviceChargeSettle\": 0,\n    \"status\": true,\n    \"statusMessage\": \"string\",\n    \"tcs\": 0,\n    \"tdsus194H\": 0,\n    \"tdsus194O\": 0,\n    \"totalGstAmountSettle\": 0,\n    \"totalTransactionAmountSettle\": 0,\n    \"transactionAmountSettle\": 0,\n    \"transactionAmountWithoutGstSettle\": 0\n  }\n]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://stage.svaas.com/api/accounting/mis-zoho-status",
+									"protocol": "https",
+									"host": [
+										"stage",
+										"svaas",
+										"com"
+									],
+									"path": [
+										"api",
+										"accounting",
+										"mis-zoho-status"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Mis payout",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{authorization}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "[\n  {\n    \"isSettleVendor\": true,\n    \"isSettleVendorDateTime\": \"2021-05-20 16:30:26\",\n    \"payoutAmount\": 900,\n    \"payoutDateTime\": \"2021-05-20 16:20:26\",\n    \"payoutStatus\": true,\n    \"transactionId\": \"SVINSTRAN-7e718811-3973-4882-9d3b-322812003d59\"\n  }\n]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://stage.svaas.com/api/accounting/mis-payout",
+									"protocol": "https",
+									"host": [
+										"stage",
+										"svaas",
+										"com"
+									],
+									"path": [
+										"api",
+										"accounting",
+										"mis-payout"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Price history",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{authorization}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://stage.svaas.com/api/accounting/price-update-history?aggregatorId=&diagnosticId=SVDIAGLAB-ssdfwt78tbh87ew4w-3cft-PO44-113&cityId=SVCITYKOLK-ssdfwse34g5654w-3cft-756y-uX0Kn1&testId=SVTEST-008c5d30-d49c-on8c67-a0c2-yQjRQoV9VN7mKIwov",
+									"protocol": "https",
+									"host": [
+										"stage",
+										"svaas",
+										"com"
+									],
+									"path": [
+										"api",
+										"accounting",
+										"price-update-history"
+									],
+									"query": [
+										{
+											"key": "aggregatorId",
+											"value": ""
+										},
+										{
+											"key": "diagnosticId",
+											"value": "SVDIAGLAB-ssdfwt78tbh87ew4w-3cft-PO44-113"
+										},
+										{
+											"key": "cityId",
+											"value": "SVCITYKOLK-ssdfwse34g5654w-3cft-756y-uX0Kn1"
+										},
+										{
+											"key": "testId",
+											"value": "SVTEST-008c5d30-d49c-on8c67-a0c2-yQjRQoV9VN7mKIwov"
+										},
+										{
+											"key": "svaasDoctorId",
+											"value": "SVDOCT-ju645090-03c0-8uht-b952-94ae11c11e11",
+											"disabled": true
+										},
+										{
+											"key": "branchId",
+											"value": "1176521",
+											"disabled": true
+										},
+										{
+											"key": "serviceId",
+											"value": "consultation",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Change transaction status",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{authorization}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://stage.svaas.com/api/accounting/change-transaction-status",
+									"protocol": "https",
+									"host": [
+										"stage",
+										"svaas",
+										"com"
+									],
+									"path": [
+										"api",
+										"accounting",
+										"change-transaction-status"
+									],
+									"query": [
+										{
+											"key": "tnxstatusid",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Transaction",
+					"item": [
+						{
+							"name": "Settlement Api",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "7ddf0483-3844-4591-8743-b59477fb1904"
+									}
+								],
+								"url": {
+									"raw": "https://stage.svaas.com/api/accounting/payment/settlement?startDate=2021-06-01&endDate=2021-06-05&pageNum=1&pageSize=2",
+									"protocol": "https",
+									"host": [
+										"stage",
+										"svaas",
+										"com"
+									],
+									"path": [
+										"api",
+										"accounting",
+										"payment",
+										"settlement"
+									],
+									"query": [
+										{
+											"key": "startDate",
+											"value": "2021-06-01"
+										},
+										{
+											"key": "endDate",
+											"value": "2021-06-05"
+										},
+										{
+											"key": "pageNum",
+											"value": "1"
+										},
+										{
+											"key": "pageSize",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}

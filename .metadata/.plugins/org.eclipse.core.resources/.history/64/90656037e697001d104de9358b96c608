@@ -1,0 +1,28 @@
+package resourcebooking.entity;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="creditcard")
+public class CreditCard {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long payment_id;
+
+	@Column(name = "cardnumber", nullable = false, length = 12)
+	private Long cardnumber;
+	
+	@Column(name = "expire", nullable = false, length = 5)
+	private String expire;
+	
+	@Column(name = "cvv", nullable = false, length = 3)
+	private int cvv;
+	
+	
+
+}

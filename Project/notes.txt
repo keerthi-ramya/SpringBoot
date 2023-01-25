@@ -1,0 +1,6 @@
+to debug the code -->
+	Double click on particular line begining and set debugger,
+	Hit the api 
+	F6  -->  forward
+	f5  -->  method implementation
+Ctrl+alt+h  	-->   call hierarchy

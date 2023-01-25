@@ -1,0 +1,11 @@
+AWS Amplify is a set of purpose-built tools and features that enables frontend web and mobile developers to quickly and easily build full-stack applications on AWS. Amplify provides two services: Amplify Hosting and Amplify Studio. Amplify Hosting provides a git-based workflow for hosting full-stack serverless web apps with continuous deployment. 
+
+Amplify Hosting features:
+1. Amplify Hosting supports the common SPA frameworks, for example, React, Angular, Vue.js, Ionic, and Ember, as well as static site generators like Gatsby, Eleventy, Hugo, VuePress, and Jekyll.
+2. Manage production and staging environments for your frontend and backend by connecting new branches
+		Amplify Hosting is designed to work with feature branch and GitFlow workflows. Amplify leverages Git branches to create new deployments every time a developer connects a new branch in their repository. After connecting your first branch, you can create a new feature branch deployment by adding a branch as follows:
+
+			On the branch list page, choose Connect branch.
+			Choose a branch from your repository.
+			Save and then deploy your app.
+3. 

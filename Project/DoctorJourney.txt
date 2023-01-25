@@ -1,0 +1,29 @@
+-------------------------
+Doctor Journey
+-------------------------
+1.Book appoint
+2.Select slot
+3.Book appointment-----Pending
+4.Payment -------------Booked
+5.HLpx Booked----------Confirmed
+6.Rescheduled---------Rescheduled
+7.Cancel-------Canceled/Declined
+3.Consultation
+4.Clinic
+5.Precription
+6.LabTest
+7.Reports
+8.Invoice----------Completed
+
+
+
+-----------------------------------
+Book Appointment
+-----------------------------------
+1. validate input request 
+2. Get Clinic details with consultation fee 
+3. get insurance partner 
+4. get cost breakdown (IN_PERSON / VIDEO) - eligibility 
+5. save appointment data in database 6. get doc patient details 
+7. set appointment dto request and call ERX partner (hplx / Navia) api to create an appointment 
+8. Payment link generation 9. send payment link

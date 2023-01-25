@@ -1,0 +1,5 @@
+package resourcebooking.entity;
+
+public class Payment {
+
+}

@@ -1,0 +1,683 @@
+{
+	"info": {
+		"_postman_id": "28fdaba0-e8a2-4834-8b9a-76f487fc7340",
+		"name": "ICICI_Doctor_OLD",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23431959"
+	},
+	"item": [
+		{
+			"name": "1. Get ICICI Access Token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"clientKey\": \"icici-client\",\n    \"clientSecret\": \"R$#43@!#gs_\",\n    \"tenantId\": \"ICICI\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseUrl}}/api/auth/tenant/signin",
+					"host": [
+						"{{BaseUrl}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"tenant",
+						"signin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "partners/login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "sad"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n \"clientId\": \"HEALTHPLIX\",\n \"clientKey\": \"healthplix-client\",\n \"clientSecret\": \"9CbXXDP.x=L98V:C\"\n}"
+				},
+				"url": {
+					"raw": "{{BaseUrl}}/api/auth/partners/login",
+					"host": [
+						"{{BaseUrl}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"partners",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Doctor Slots",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{access_token}}",
+						"type": "text"
+					},
+					{
+						"key": "clientSecret",
+						"value": "R$#43@!#gs_",
+						"type": "text"
+					},
+					{
+						"key": "clientKey",
+						"value": "icici-client",
+						"type": "text"
+					},
+					{
+						"key": "tenantId",
+						"value": "ICICI",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{BaseUrl}}/icici/doctor-slots?bookingType=InPerson&branchId=SVCLI-a4068ede-c607-11eb-8529-0242ac130003&docId=SVDOCT-ju645090-03c0-8uht-b952-54ae31c71e14&from_date=2022-11-07&to_date=2022-11-07",
+					"host": [
+						"{{BaseUrl}}"
+					],
+					"path": [
+						"icici",
+						"doctor-slots"
+					],
+					"query": [
+						{
+							"key": "bookingType",
+							"value": "InPerson"
+						},
+						{
+							"key": "branchId",
+							"value": "SVCLI-a4068ede-c607-11eb-8529-0242ac130003"
+						},
+						{
+							"key": "docId",
+							"value": "SVDOCT-ju645090-03c0-8uht-b952-54ae31c71e14"
+						},
+						{
+							"key": "from_date",
+							"value": "2022-11-07"
+						},
+						{
+							"key": "to_date",
+							"value": "2022-11-07"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Doctor details",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{52_ICICI_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "a7e925b6-66cf-423b-9db0-a0a39f37cad8",
+						"type": "text"
+					},
+					{
+						"key": "clientSecret",
+						"value": "R$#43@!#gs_",
+						"type": "text"
+					},
+					{
+						"key": "clientKey",
+						"value": "icici-client",
+						"type": "text"
+					},
+					{
+						"key": "tenantId",
+						"value": "ICICI",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://qa.svaas.com/icici/doctor/4/4819",
+					"protocol": "https",
+					"host": [
+						"qa",
+						"svaas",
+						"com"
+					],
+					"path": [
+						"icici",
+						"doctor",
+						"4",
+						"4819"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "doctors list",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "a7e925b6-66cf-423b-9db0-a0a39f37cad8",
+						"type": "text"
+					},
+					{
+						"key": "clientSecret",
+						"value": "R$#43@!#gs_",
+						"type": "text"
+					},
+					{
+						"key": "clientKey",
+						"value": "icici-client",
+						"type": "text"
+					},
+					{
+						"key": "tenantId",
+						"value": "ICICI",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://qa.svaas.com/icici/doctor-list",
+					"protocol": "https",
+					"host": [
+						"qa",
+						"svaas",
+						"com"
+					],
+					"path": [
+						"icici",
+						"doctor-list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "book-appointment",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{access_token}}",
+						"type": "text"
+					},
+					{
+						"key": "clientSecret",
+						"value": "R$#43@!#gs_",
+						"type": "text"
+					},
+					{
+						"key": "clientKey",
+						"value": "icici-client",
+						"type": "text"
+					},
+					{
+						"key": "tenantId",
+						"value": "ICICI",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"data\": {\n        \"appointment_details\": {\n            \"appointment_date\": \"2022-12-08\",\n            \"appointment_end_time\": \"16:30\",\n            \"appointment_status\": \"booked\",\n            \"appointment_time\": \"16:20\",\n            \"appointment_type\": \"OnlineConsultation\"\n        },\n        \"appointment_id\": \"null\",\n        \"authorization_code\": \"1231\",\n        \"branch_id\": \"SVCLI-a4068ede-c607-11eb-8529-0242ac130003\",\n        \"consultation_amount\": 320.0,\n        \"doctor_id\": \"SVDOCT-ju645090-03c0-8uht-b952-54ae31c71e14\",\n        \"elegibility_amount\": 450,\n        \"insurance_company_name\": \"ICICI Lombard\",\n        \"number_of_consultation\": 1,\n        \"patient_details\": {\n            \"dob\": \"1995-01-01\",\n            \"gender\": \"M\",\n            \"name\": \"Mr PARTHA SAHA\",\n            \"phone\": \"8240058503\",\n            \"policy_company\": \"ICICI Lombard\",\n            \"policy_id\": \"PS654321\"\n        },\n        \"payable_by_insurance\": 320,\n        \"payable_by_user\": 0,\n        \"payable_by_user_GST\": 0,\n        \"tenant_appointment_id\": \"2312\",\n        \"uhid\": \"PS654321\",\n        \"icici_order_id\": \"ICICI_3452\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseUrl}}/icici/book-appointment",
+					"host": [
+						"{{BaseUrl}}"
+					],
+					"path": [
+						"icici",
+						"book-appointment"
+					],
+					"query": [
+						{
+							"key": "insuranceId",
+							"value": "AB4",
+							"disabled": true
+						},
+						{
+							"key": "insuranceName",
+							"value": "ICICI Lombard",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Appointment Detail",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{access_token}}",
+						"type": "text"
+					},
+					{
+						"key": "clientSecret",
+						"value": "R$#43@!#gs_",
+						"type": "text"
+					},
+					{
+						"key": "clientKey",
+						"value": "icici-client",
+						"type": "text"
+					},
+					{
+						"key": "tenantId",
+						"value": "ICICI",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{BaseUrl}}/icici/appointment-detail?appointmentId=D-HX2906-1523-7431450160",
+					"host": [
+						"{{BaseUrl}}"
+					],
+					"path": [
+						"icici",
+						"appointment-detail"
+					],
+					"query": [
+						{
+							"key": "appointmentId",
+							"value": "D-HX2906-1523-7431450160"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cancel Appointment",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{access_token}}",
+						"type": "text"
+					},
+					{
+						"key": "clientSecret",
+						"value": "R$#43@!#gs_",
+						"type": "text"
+					},
+					{
+						"key": "clientKey",
+						"value": "icici-client",
+						"type": "text"
+					},
+					{
+						"key": "tenantId",
+						"value": "ICICI",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{BaseUrl}}/icici/cancel-appointment?appointmentId=D-HX0707-1844-8474289426&authorizationCode=12&cancellationReason=Random",
+					"host": [
+						"{{BaseUrl}}"
+					],
+					"path": [
+						"icici",
+						"cancel-appointment"
+					],
+					"query": [
+						{
+							"key": "appointmentId",
+							"value": "D-HX0707-1844-8474289426"
+						},
+						{
+							"key": "authorizationCode",
+							"value": "12"
+						},
+						{
+							"key": "cancellationReason",
+							"value": "Random"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-rx details",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "87839c27-7036-40b0-ad0a-ff55c3e51189",
+						"type": "text"
+					},
+					{
+						"key": "clientSecret",
+						"value": "R$#43@!#gs_",
+						"type": "text"
+					},
+					{
+						"key": "clientKey",
+						"value": "icici-client",
+						"type": "text"
+					},
+					{
+						"key": "tenantId",
+						"value": "ICICI",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://stage.svaas.com/icici/get-rx?appointmentId=596593949&authorizationCode=123456",
+					"protocol": "https",
+					"host": [
+						"stage",
+						"svaas",
+						"com"
+					],
+					"path": [
+						"icici",
+						"get-rx"
+					],
+					"query": [
+						{
+							"key": "appointmentId",
+							"value": "596593949"
+						},
+						{
+							"key": "authorizationCode",
+							"value": "123456"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add update appointment",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{access_token}}",
+						"type": "text"
+					},
+					{
+						"key": "clientSecret",
+						"value": "R$#43@!#gs_",
+						"type": "text"
+					},
+					{
+						"key": "clientKey",
+						"value": "icici-client",
+						"type": "text"
+					},
+					{
+						"key": "tenantId",
+						"value": "ICICI",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{partner_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"data\": {\n        \"appointment_details\": {\n            \"appointment_date\": \"2022-12-08\",\n            \"appointment_status\": \"confirmed\",\n            \"appointment_type\": \"OnlineConsultation\",\n            \"cancellation_reason\": \"\",\n            \"cancelled_by\": \"\",\n            \"end_time\": \"16:30\",\n            \"start_time\": \"16:20\"\n        },\n        \"appointment_id\": \"635499619\",\n        \"branch_id\": \"6576547\",\n        \"doctor_id\": \"5459627\",\n        \"policy_company\": \"ICICI Lombard\",\n        \"policy_id\": \"PS654321\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseUrl}}/healthplix/doctor/add-update-appointment",
+					"host": [
+						"{{BaseUrl}}"
+					],
+					"path": [
+						"healthplix",
+						"doctor",
+						"add-update-appointment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Push e -consultation",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{partner_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "e5c05754-7989-41df-81b9-afa3d3606b31",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "clientSecret",
+						"value": "R$#43@!#gs_",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "clientKey",
+						"value": "icici-client",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "tenantId",
+						"value": "ICICI",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"appointment_id\": \"756352599\",\n  \"url\": \"https://tinyurl.com/ygbmurfgte\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseUrl}}/healthplix/push-econsultation-url",
+					"host": [
+						"{{BaseUrl}}"
+					],
+					"path": [
+						"healthplix",
+						"push-econsultation-url"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "verify otp",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{partner_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 043b0d7d-a1ba-4c23-9958-9927650b63a3",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"data\": {\r\n        \"appointment_id\": \"824982819\",\r\n        \"otp\": \"394881\"\r\n    }\r\n}"
+				},
+				"url": {
+					"raw": "{{BaseUrl}}/emp-service/patient/verify-otp",
+					"host": [
+						"{{BaseUrl}}"
+					],
+					"path": [
+						"emp-service",
+						"patient",
+						"verify-otp"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addupdaterx",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{partner_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"data\": {\n        \"appointment_id\": \"635499619\",\n        \"doctor_id\": \"5459627\",\n        \"policy_id\": \"PS654321\",\n        \"policy_company\": \"ICICI Lombard\",\n        \"branch_id\": \"6576547\",\n        \"rx_date\": \"2022-12-08\",\n        \"rx_pdf\": \"https://www.orimi.com/pdf-test.pdf\",\n        \"tests_advised\": [\n            \"RBS\",\n            \"HBA1C\",\n            \"X-ray - HSG\"\n        ],\n        \"rx_raw\": [\n            {\n                \"dosage\": \"0-0-1\",\n                \"duration\": \"10 Days\",\n                \"frequency\": \"weekly\",\n                \"timing\": \"5 days a week. Avoid on the day and immediately next day of taking Methotrexate 10mg\",\n                \"medicine_name\": \"ZINCOVIT TABLET\"\n            },\n            {\n                \"dosage\": \"0-0-1\",\n                \"duration\": \"10 Days\",\n                \"frequency\": \"weekly\",\n                \"timing\": \"After Food\",\n                \"medicine_name\": \"AMAZEO 100MG CAPSULE\"\n            }\n           \n            \n        ],\n        \"referred_doctor\": \"\",\n        \"next_visit\": null,\n        \"complaints\": \"FEVER\",\n        \"diagnosis\": \"DENGUE FEVER\",\n        \"advice\": \"\",\n        \"vitals\": {\n            \"bmi\": null,\n            \"pulse\": null,\n            \"bp-dia\": null,\n            \"bp-sys\": null,\n            \"height\": null,\n            \"weight\": null\n        }\n    }\n}"
+				},
+				"url": {
+					"raw": "{{BaseUrl}}/emp-service/patient/add-update-rx",
+					"host": [
+						"{{BaseUrl}}"
+					],
+					"path": [
+						"emp-service",
+						"patient",
+						"add-update-rx"
+					],
+					"query": [
+						{
+							"key": "tenantId",
+							"value": "ICICI",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "token",
+			"value": ""
+		}
+	]
+}

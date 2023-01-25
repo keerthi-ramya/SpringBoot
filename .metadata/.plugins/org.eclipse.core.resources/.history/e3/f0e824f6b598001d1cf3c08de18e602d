@@ -1,0 +1,453 @@
+package resourcebooking.controller;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import javassist.expr.NewArray;
+import resourcebooking.SlotResponse;
+import resourcebooking.entity.Booking;
+import resourcebooking.entity.Doctor;
+import resourcebooking.entity.Message;
+import resourcebooking.entity.Patient;
+import resourcebooking.entity.User;
+import resourcebooking.repo.BookingRepository;
+import resourcebooking.repo.DoctorRepository;
+import resourcebooking.repo.PatientRepository;
+import resourcebooking.repo.UserRepository;
+import resourcebooking.service.BookingService;
+import resourcebooking.service.DoctorServive;
+import resourcebooking.service.PatientService;
+
+@Controller
+public class AppController {
+
+	@Autowired
+	private UserRepository userRepo;
+	
+	@Autowired
+	private DoctorRepository doctorRepo;
+		
+	@Autowired
+	private PatientRepository patientRepo;
+	
+	@Autowired
+	private BookingRepository bookingRepo;
+	
+	@Autowired
+	private PatientService patientService;
+	
+	@Autowired
+	private DoctorServive doctorService;
+	
+	@Autowired
+	private BookingService bookingService;
+		
+	public AppController(DoctorServive doctorService) {
+	
+		this.doctorService = doctorService;
+	}
+
+	public AppController(PatientService patientService) {
+		this.patientService=patientService;
+	
+		// TODO Auto-generated constructor stub
+	}
+	
+	public AppController() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	@GetMapping("/home")
+	public String indexPage() {
+		return "home";
+	}
+	
+	@GetMapping("/index")
+	public String viewHomePage() {
+		return "index";
+	}
+	
+	@GetMapping("/register")
+	public String showRegistrationForm(Model model) {
+		model.addAttribute("user", new User());
+		
+		return "signup_form";
+	}
+	@PostMapping("/user_register")
+	public String processRegister(@ModelAttribute("user") User user,HttpSession session)  
+	 {
+		
+		String email=user.getEmail();
+		User data=userRepo.findByEmail(email);
+		Doctor demail=doctorRepo.findByEmail(email);
+		Patient pemail=patientRepo.findByEmail(email);
+		if (data == null) {
+			if (demail == null && pemail == null) {
+				
+				BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+				String encodedPassword = passwordEncoder.encode(user.getPassword());
+				user.setPassword(encodedPassword);
+
+				userRepo.save(user);
+
+				return "register_success";
+				
+			}
+			else {
+				session.setAttribute("message", new Message("You don't have an access to register as admin....! You have credentials for Doctor/Patient", "danger"));
+				//redirectAttributes.addFlashAttribute("error", "You don't have an access");
+				return "signup_form";
+			}
+		} 
+		else {
+			session.setAttribute("message",new Message("Email is  already registered","danger"));
+			return "signup_form";
+		}
+	}
+	
+	@GetMapping("/add-patient")
+	public String addPatient(Model model) {
+		model.addAttribute("patient", new Patient());
+		
+		return "add_patient";
+	}
+	
+	@PostMapping("/adding-patient")
+	public String addingPatient(@ModelAttribute("patient") Patient patient, HttpSession session) {
+		
+		String email1=patient.getEmail();
+		Patient data=patientRepo.findByEmail(email1);
+		if(data==null) {
+		patientRepo.save(patient);
+		session.setAttribute("message",new Message("Patient is added successfully.","success"));
+		return "redirect:/users";
+		}
+		else {
+			session.setAttribute("message",new Message("Patient is  already registered","danger"));
+			return "add_patient";
+		}
+	}
+	
+	@GetMapping("/add-doctor")
+	public String addDoctor(Model model) {
+		model.addAttribute("doctor", new Doctor());
+		
+		return "add_doctor";
+	}
+	
+	@PostMapping("/adding-Doctor")
+	public String addingDoctor(@ModelAttribute("doctor") Doctor doctor, HttpSession session) {
+		
+		String email=doctor.getEmail();
+		Doctor data=doctorRepo.findByEmail(email);
+		if(data==null) {
+			doctorRepo.save(doctor);
+			session.setAttribute("message",new Message("Doctor is added Successfully","success"));
+			return "redirect:/users";
+		}
+		else {
+			session.setAttribute("message",new Message("Doctor is  already registered","danger"));
+			return "add_doctor";
+		}
+	}
+	
+	@GetMapping("/login_patient")
+	public String showLoginForm(Model model) {
+		Patient patient=new Patient();
+		model.addAttribute("patient",patient);
+		return "login-patient";
+	}
+	
+	
+	 
+	@PostMapping("/patient_login_process")
+	public String loginProcesss(@ModelAttribute("patient") Patient patient, Model model,HttpSession session) {
+		System.out.println(patient.getEmail());
+		String email1=patient.getEmail();
+		Patient data=patientRepo.findByEmail(email1);
+		if(data==null) {
+			session.setAttribute("message",new Message("Email is  not registered","danger"));
+			return "login-patient";
+		
+		}
+		else
+		{
+			
+			if(patient.getPassword().equals(data.getPassword()))
+			{
+				List<Doctor> listDoctor = doctorRepo.findAll();
+				model.addAttribute("listDoctors", listDoctor);			
+				model.addAttribute("data",data);
+				return "booking";
+			}
+			else
+			{
+				session.setAttribute("message",new Message("Given email and Password missmatch","danger"));
+				return "login-patient";
+			}
+		}
+		
+	}
+	
+		
+	@GetMapping("/login_doctor")
+	public String showLoginFormd(Model model) {
+		Doctor doctor=new Doctor();
+		model.addAttribute("doctor",doctor);
+		return "login-doctor";
+	}
+	
+	@PostMapping("/doctor_login_process")
+	public String loginProcesssd(@ModelAttribute("doctor") Doctor doctor, Model model,HttpSession session) {
+		//System.out.println(doctor.getEmail());
+		String email1=doctor.getEmail();
+		Doctor data=doctorRepo.findByEmail(email1);
+		
+		if(data==null) {
+			session.setAttribute("message",new Message("Email is  not registered","danger"));
+			return "login-doctor";
+		
+		}
+		else
+		{
+			
+			if(doctor.getPassword().equals(data.getPassword()))
+			{
+				Long did=data.getId();
+				List<Booking> booking=bookingRepo.findAll();
+				List<Booking> booking1=new ArrayList<>();
+				for(Booking blist:booking) {
+					if(did==blist.getDoctor_id()) {
+						
+						booking1.add(blist);
+					}
+				}
+				model.addAttribute("booking1",booking1);
+				model.addAttribute("data",data);
+				
+				return "show_details";
+			}
+			else
+			{
+				session.setAttribute("message",new Message("Given email and Password missmatch","danger"));
+				return "login-doctor";
+			}
+		}
+		
+	}
+	
+	@GetMapping("/doctor_response/{bid}")
+	public String doctorResponse(@PathVariable("bid") Long bid, Model model) {
+		Booking booking_id=bookingService.findBookingById(bid);
+		Long did=booking_id.getDoctor_id();
+		Optional<Doctor> data=doctorRepo.findById(did);
+		List<Booking> booking=bookingRepo.findAll();
+		List<Booking> booking1=new ArrayList<>();
+		
+		for(Booking blist:booking) {
+			if(did==blist.getDoctor_id()) {
+				if(bid==blist.getBooking_id()) {
+					blist.setDoctor_response("acctepted");
+				}
+				booking1.add(blist);
+				bookingRepo.saveAll(booking1);
+			}
+		}
+		model.addAttribute("booking1",booking1);
+		model.addAttribute("data",data);
+		
+		return "doctor_response";	
+	}
+	 
+	 @RequestMapping("/v2/book/{did}/{pid}")
+	 public String showBookAppointmentForm(@PathVariable("did") Long did, @PathVariable("pid") Long pid, Model model) {
+		 
+		 Doctor doctor=doctorService.findDoctorById(did);
+		 model.addAttribute("doctor", doctor);
+		 Patient patient=patientService.findPatientById(pid);
+		 model.addAttribute("patient",patient);
+		 model.addAttribute("booking", new Booking());
+		 
+		 return "v2book";
+	 }
+	 
+	
+	 
+	 @PostMapping("/v2/book_appointment/{did}/{pid}")
+		public String BookApp(@PathVariable("did") Long did, @PathVariable("pid") Long pid,@ModelAttribute("booking") Booking booking,Model model,HttpSession session) {
+		 booking.setPatient_id(pid);
+		 booking.setDoctor_id(did);
+		 Patient patient=patientService.findPatientById(pid);
+		 booking.setPatientname(patient.getFirstname());
+		 Doctor doctor=doctorService.findDoctorById(did);
+		 booking.setDoctortname(doctor.getFirstname());
+		 booking.setSpecilization(doctor.getSpecialization());
+		 
+		 
+			String date=booking.getDate();
+			String slot=booking.getSlots();
+			Long Did=booking.getDoctor_id();
+			Long Pid=booking.getPatient_id();
+			List<Booking> bookingData=bookingRepo.findAll();
+			for(Booking d: bookingData) {
+				if(d.getDoctor_id()==did && d.getPatient_id()==pid)
+				{
+					model.addAttribute("patient", patient);
+					model.addAttribute("doctor",doctor);
+		            session.setAttribute("message",new Message("You already have an appointment with this Doctor","danger"));
+		            return "v2book";
+					
+				}
+				else if(d.getDoctor_id()==did && slot.equals(d.getSlots()) && date.equals(d.getDate())) {
+					model.addAttribute("patient", patient);
+					model.addAttribute("doctor",doctor);
+		            session.setAttribute("message",new Message("slot is not Available","danger"));
+		            return "v2book";
+				}
+				
+				
+			}
+			booking.setStatus("booked");
+			booking.setDoctor_response("accept");
+			bookingRepo.save(booking);
+			model.addAttribute("patient", patient);
+			model.addAttribute("doctor",doctor);
+			return "booked";
+	 }
+	 
+	 @GetMapping("/payment/{pid}/{did}")
+	 public String payment(@PathVariable("pid") Long pid, @PathVariable("did") Long did, Model model) {
+		 Doctor doctor=doctorService.findDoctorById(did);
+		 Patient patient=patientService.findPatientById(pid);
+		 
+		 return "wrong";	 
+	 }
+	@GetMapping("edit-doctor/{id}")
+    public String showUpdateForm(@PathVariable("id") Long id, Model model ) {
+        Doctor doctor = doctorService.findDoctorById(id);
+            
+        model.addAttribute("doctor", doctor);
+        return "update_doctor";
+    }
+	
+	@PostMapping("edit-doctor-details/{id}")
+	public String updateDoctor(@PathVariable("id") long id, @ModelAttribute("doctor") Doctor doctor, Model model, HttpSession session) {
+	    
+	    	Doctor doctor1 = doctorService.findDoctorById(id);
+	    		
+	    		doctor1.setFirstname(doctor.getFirstname());
+	    		doctor1.setLastname(doctor.getLastname());
+	    		doctor1.setEmail(doctor.getEmail());
+	    		doctor1.setGender(doctor.getGender());
+	    		doctor1.setPhone(doctor.getPhone());
+	    		doctor1.setSpecialization(doctor.getSpecialization());
+	    		doctor1.setAddress(doctor.getAddress());
+	    		doctor1.setAbout(doctor.getAbout());
+	    		doctor1.setFee(doctor.getFee());
+	    		doctorRepo.save(doctor1);
+	    		session.setAttribute("message",new Message("Doctor Details are Updated","success"));
+	        return "redirect:/users";
+	}
+	
+	@GetMapping("/reschedule/{bid}")
+	public String rescheduleFormShow(@PathVariable("bid") Long bid, Model model)
+	{
+		Booking booking= bookingService.findBookingById(bid);
+		model.addAttribute("booking",booking);
+		return "reschedule";
+	}
+	
+	@PostMapping("reschedule-appointment/{bid}/{pid}")
+	public String rescheduleAppointment(@PathVariable("bid") Long bid , @PathVariable("pid") Long pid, @ModelAttribute("booking") Booking booking, Model model) {
+		Booking booking1=bookingService.findBookingById(bid);
+		 booking1.setSlots(booking.getSlots());
+		 booking1.setType(booking.getType());
+		 booking1.setDate(booking.getDate());
+		 booking1.setStatus("rescheduled");
+		// bid=booking1.getPatient_id();
+		 System.out.println(bid);
+		 bookingRepo.save(booking1);
+		 return "redirect:/appointments/{pid}";
+	}
+	@PostMapping("/cancel/{bid}/pid}")
+	public String cancel(@PathVariable("bid") Long bid, @PathVariable Long pid) {
+		Booking booking=bookingService.findBookingById(bid);
+		booking.setStatus("Cancelled");
+		return "redirect:/appointments/{pid}";
+	}
+	@GetMapping("edit-patient/{id}")
+    public String showUpdateFormp(@PathVariable("id") Long id, Model model) {
+        Patient patient = patientService.findPatientById(id);
+        model.addAttribute("patient", patient);
+        return "update_patient";
+    }
+	@PostMapping("edit-patient-details/{id}")
+	public String updatePatient(@PathVariable("id") Long id, @ModelAttribute("patient") Patient patient, Model model,HttpSession session) {
+	    
+		 Patient patient1 = patientService.findPatientById(id);
+	    	
+	    		patient1.setFirstname(patient.getFirstname());
+	    		patient1.setLastname(patient.getLastname());
+	    		patient1.setEmail(patient.getEmail());
+	    		patient1.setGender(patient.getGender());
+	    		patient1.setPhone(patient.getPhone());
+	    		patientRepo.save(patient1);
+	    		session.setAttribute("message",new Message("Patient details are Updated Successfully","success"));
+	        return "redirect:/users";
+	}
+	@GetMapping("/users")
+	public String listUsers(Model model) {
+		List<User> listUsers = userRepo.findAll();
+		model.addAttribute("listUsers", listUsers);
+		
+		List<Doctor> listDoctor = doctorRepo.findAll();
+		model.addAttribute("listDoctors", listDoctor);
+		
+		List<Patient> listPatient = patientRepo.findAll();
+		model.addAttribute("listPatients", listPatient);
+		
+		return "users";
+	}
+	@GetMapping("/appointments/{pid}")
+	 public String showAppointments(@PathVariable("pid") Long pid, Model model)
+	 {
+		List<Booking> booking= bookingRepo.findAll();
+		List<Booking> bookingInperson=new ArrayList<>();
+		List<Booking> bookingOnline=new ArrayList<>();
+		for(Booking blist:booking) {
+			if(pid==blist.getPatient_id()) {
+				if(blist.getType().equalsIgnoreCase("inperson")) {
+				bookingInperson.add(blist);
+				}
+				else {
+				bookingOnline.add(blist);
+				}
+			}
+		}
+		model.addAttribute("bookingInperson",bookingInperson);
+		model.addAttribute("bookingOnline",bookingOnline);
+		return "show_appointments"; 
+	 }	
+}

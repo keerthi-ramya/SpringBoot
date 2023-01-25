@@ -1,0 +1,355 @@
+package resourcebooking.controller;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import resourcebooking.SlotResponse;
+import resourcebooking.entity.Booking;
+import resourcebooking.entity.Doctor;
+import resourcebooking.entity.Patient;
+import resourcebooking.entity.User;
+import resourcebooking.repo.BookingRepository;
+import resourcebooking.repo.DoctorRepository;
+import resourcebooking.repo.PatientRepository;
+import resourcebooking.repo.UserRepository;
+import resourcebooking.service.Services;
+
+@Controller
+public class AppController {
+
+	@Autowired
+	private UserRepository userRepo;
+	
+	@Autowired
+	private DoctorRepository doctorRepo;
+		
+	@Autowired
+	private PatientRepository patientRepo;
+	
+	@Autowired
+	private BookingRepository bookingRepo;
+	
+	private Services service;
+	
+	@GetMapping("")
+	public String indexPage() {
+		return "home";
+	}
+	
+	@GetMapping("/index")
+	public String viewHomePage() {
+		return "index";
+	}
+	
+	@GetMapping("/register")
+	public String showRegistrationForm(Model model) {
+		model.addAttribute("user", new User());
+		
+		return "signup_form";
+	}
+	@PostMapping("/user_register")
+	public String processRegister(@ModelAttribute("user") User user) {
+		
+		String email=user.getEmail();
+		User data=userRepo.findByEmail(email);
+		if(data==null)
+		{
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		String encodedPassword = passwordEncoder.encode(user.getPassword());
+		user.setPassword(encodedPassword);
+		
+		userRepo.save(user);
+		
+		return "register_success";
+		}
+		else {
+			return "wrong";
+		}
+	}
+	
+	@GetMapping("/add-patient")
+	public String addPatient(Model model) {
+		model.addAttribute("patient", new Patient());
+		
+		return "add_patient";
+	}
+	
+	@PostMapping("/adding-patient")
+	public String addingPatient(@ModelAttribute("patient") Patient patient) {
+		
+		String email1=patient.getEmail();
+		Patient data=patientRepo.findByEmail(email1);
+		if(data==null) {
+		patientRepo.save(patient);
+		
+		return "patient_added";
+		}
+		else {
+			return "wrong";
+		}
+	}
+	
+	@GetMapping("/add-doctor")
+	public String addDoctor(Model model) {
+		model.addAttribute("doctor", new Doctor());
+		
+		return "add_doctor";
+	}
+	
+	@PostMapping("/adding-Doctor")
+	public String addingDoctor(@ModelAttribute("doctor") Doctor doctor) {
+		
+		String email=doctor.getEmail();
+		Doctor data=doctorRepo.findByEmail(email);
+		if(data==null) {
+			doctorRepo.save(doctor);
+			return "doctor_added";
+		}
+		else {
+			return "wrong";
+		}
+	}
+	
+	@GetMapping("/slots")
+	public SlotResponse slots() {
+	String slots="{\"success\":true,\"error\":\"\",\"data\":{\"slots\":{\"2022-12-07\":{\"session_1\":[{\"start_time\":\"09:00 AM\",\"end_time\":\"12:00 PM\",\"status\":\"booked\"},{\"start_time\":\"12:00 PM\",\"end_time\":\"03:00 PM\",\"status\":\"booked\"}],\"session_2\":[{\"start_time\":\"03:00 PM\",\"end_time\":\"06:00 PM\",\"status\":\"available\"},{\"start_time\":\"06:00 PM\",\"end_time\":\"09:00 PM\",\"status\":\"available\"}]},\"2022-12-08\":{\"session_1\":[{\"start_time\":\"09:00 AM\",\"end_time\":\"12:00 PM\",\"status\":\"booked\"},{\"start_time\":\"12:00 PM\",\"end_time\":\"03:00 PM\",\"status\":\"booked\"}],\"session_2\":[{\"start_time\":\"03:00 PM\",\"end_time\":\"06:00 PM\",\"status\":\"available\"},{\"start_time\":\"06:00 PM\",\"end_time\":\"09:00 PM\",\"status\":\"available\"}]},\"2022-12-09\":{\"session_1\":[{\"start_time\":\"09:00 AM\",\"end_time\":\"12:00 PM\",\"status\":\"booked\"},{\"start_time\":\"12:00 PM\",\"end_time\":\"03:00 PM\",\"status\":\"booked\"}],\"session_2\":[{\"start_time\":\"03:00 PM\",\"end_time\":\"06:00 PM\",\"status\":\"available\"},{\"start_time\":\"06:00 PM\",\"end_time\":\"09:00 PM\",\"status\":\"available\"}]},\"2022-12-10\":{\"session_1\":[{\"start_time\":\"09:00 AM\",\"end_time\":\"12:00 PM\",\"status\":\"booked\"},{\"start_time\":\"12:00 PM\",\"end_time\":\"03:00 PM\",\"status\":\"booked\"}],\"session_2\":[{\"start_time\":\"03:00 PM\",\"end_time\":\"06:00 PM\",\"status\":\"available\"},{\"start_time\":\"06:00 PM\",\"end_time\":\"09:00 PM\",\"status\":\"available\"}]},\"2022-12-11\":{},\"2022-12-12\":{\"session_1\":[{\"start_time\":\"09:00 AM\",\"end_time\":\"12:00 PM\",\"status\":\"booked\"},{\"start_time\":\"12:00 PM\",\"end_time\":\"03:00 PM\",\"status\":\"booked\"}],\"session_2\":[{\"start_time\":\"03:00 PM\",\"end_time\":\"06:00 PM\",\"status\":\"available\"},{\"start_time\":\"06:00 PM\",\"end_time\":\"09:00 PM\",\"status\":\"available\"}]},\"2022-12-13\":{\"session_1\":[{\"start_time\":\"09:00 AM\",\"end_time\":\"12:00 PM\",\"status\":\"booked\"},{\"start_time\":\"12:00 PM\",\"end_time\":\"03:00 PM\",\"status\":\"booked\"}],\"session_2\":[{\"start_time\":\"03:00 PM\",\"end_time\":\"06:00 PM\",\"status\":\"available\"},{\"start_time\":\"06:00 PM\",\"end_time\":\"09:00 PM\",\"status\":\"available\"}]}},\"slot_duration\":180},\"timeConversionRequired\":true,\"status_code\":200}";
+	ObjectMapper objectMapper=new ObjectMapper();
+	
+	return null;
+	}
+	
+	@GetMapping("/login_patient")
+	public String showLoginForm(Model model) {
+		Patient patient=new Patient();
+		model.addAttribute("patient",patient);
+		return "login-patient";
+	}
+	
+	
+	 
+	@PostMapping("/patient_login_process")
+	public String loginProcesss(@ModelAttribute("patient") Patient patient, Model model) {
+		System.out.println(patient.getEmail());
+		String email1=patient.getEmail();
+		Patient data=patientRepo.findByEmail(email1);
+		if(data==null) {
+			return "wrong";
+		
+		}
+		else
+		{
+			
+			if(patient.getPassword().equals(data.getPassword()))
+			{
+				List<Doctor> listDoctor = doctorRepo.findAll();
+				model.addAttribute("listDoctors", listDoctor);
+				
+				model.addAttribute("data",data);
+				return "booking";
+			}
+			else
+			{
+				return "wrong";
+			}
+		}
+		
+	}
+		
+	@GetMapping("/login_doctor")
+	public String showLoginFormd(Model model) {
+		Doctor doctor=new Doctor();
+		model.addAttribute("doctor",doctor);
+		return "login-doctor";
+	}
+	 
+	
+	@PostMapping("/doctor_login_process")
+	public String loginProcesssd(@ModelAttribute("doctor") Doctor doctor) {
+		System.out.println(doctor.getEmail());
+		String email1=doctor.getEmail();
+		Doctor data=doctorRepo.findByEmail(email1);
+		if(data==null) {
+			return "wrong";
+		
+		}
+		else
+		{
+			
+			if(doctor.getPassword().equals(data.getPassword()))
+			{
+				return "show_details";
+			}
+			else
+			{
+				return "wrong";
+			}
+		}
+		
+	}
+	
+	
+
+	
+	
+	
+	 @PostMapping("/patient_login")
+	 public String processLogin(Patient patient) {
+		// patientRepo.findByEmail()
+		 return"patientpage";
+	 }
+	
+	
+	
+//	@PutMapping("edit-doctor")
+//    public String updateDoctor(@RequestParam("id") Long id, @PathVariable("id") Long Id,Model model) {
+//        Optional<Doctor> doctor = doctorRepo.findById(id);
+//            
+//        model.addAttribute("doctor", doctor);
+//        return "update_doctor";
+//    }
+	
+	
+//	@GetMapping("edit-doctor")
+//	public ModelAndView updateDoctor(@PathVariable("id") Long id) {
+//		ModelAndView editView=new ModelAndView("Update_doctor");
+//		Optional<Doctor> doctor = doctorRepo.findById(id);
+//		editView.addObject("doctor",doctor);
+//		
+//		return editView;
+//		
+//	}
+	 
+	 @RequestMapping("/v2/book/{did}/{pid}")
+	 public String showBookAppointmentForm(@PathVariable("did") Long did, @PathVariable("pid") Long pid, Model model) {
+		 
+		 Optional<Doctor> doctor=doctorRepo.findById(did);
+		 model.addAttribute("doctor", doctor);
+		 Optional<Patient> patient=patientRepo.findById(pid);
+		 model.addAttribute("patient",patient);
+		 model.addAttribute("booking", new Booking());
+		 
+		 return "v2book";
+	 }
+	 
+	 @PostMapping("/v2/book_appointment")
+		public String BookApp(@ModelAttribute("booking") Booking booking) {
+			String date=booking.getDate();
+			String slot=booking.getSlots();
+			Long Did=booking.getDoctor_id();
+			Optional<Booking> data=bookingRepo.findById(Did);
+			if(data==null)
+			{
+				return "redirect:/success";
+			}
+			else if(Did==data.get().getDoctor_id()  && slot.equals(data.get().getSlots()) && date.equals(data.get().getDate())) 
+			{
+				return "redirect:/Wrong";
+				}
+			else {
+			return "redirect:/success";
+			}
+		}
+
+	
+	
+	
+	@GetMapping("edit-doctor/{id}")
+    public String showUpdateForm(@PathVariable("id") Long id, Model model ) {
+        Optional<Doctor> doctor = doctorRepo.findById(id);
+            
+        model.addAttribute("doctor", doctor);
+        return "update_doctor";
+    }
+	
+	@PostMapping("edit-doctor-details/{id}")
+	public String updateDoctor(@PathVariable("id") long id, @ModelAttribute("doctor") Doctor doctor, Model model) {
+	    
+	    	Optional<Doctor> doctorOptional = doctorRepo.findById(id);
+	    			if(doctorOptional.isPresent()) {
+	    		doctorOptional.get().setFirstname(doctor.getFirstname());
+	    		doctorOptional.get().setLastname(doctor.getLastname());
+	    		doctorOptional.get().setEmail(doctor.getEmail());
+	    		doctorOptional.get().setPassword(doctor.getPassword());
+	    		doctorOptional.get().setPhone(doctor.getPhone());
+	    		doctorRepo.save(doctorOptional.get());
+	    	}
+	        return "redirect:/register_success";
+	}
+	
+	@GetMapping("edit-patient/{id}")
+    public String showUpdateFormp(@PathVariable("id") Long id, Model model) {
+        Patient patient = service.findPatientById(id);
+        model.addAttribute("patient", patient);
+        return "update_patient";
+    }
+	
+	@PostMapping("edit-patient-details/{id}")
+	public String updatePatient(@PathVariable("id") long id, @ModelAttribute("patient") Patient patient, Model model) {
+	    
+		 Patient patientOptional = service.findPatientById(id);
+	    	if(patinetOptional.isPresent()) {
+	    		patinetOptional.get().setFirstname(patient.getFirstname());
+	    		patinetOptional.get().setLastname(patient.getLastname());
+	    		patinetOptional.get().setEmail(patient.getEmail());
+	    		patinetOptional.get().setPassword(patient.getPassword());
+	    		patinetOptional.get().setPhone(patient.getPhone());
+	    		patientRepo.save(patinetOptional.get());
+	    	}
+	        return "redirect:/users";
+	}
+	
+//	public ModelAndView showUpdateForm(@PathVariable("id") Long id) {
+//		ModelAndView edit=new ModelAndView("update_patient");
+//		Optional<Patient> patientOptional=patientRepo.findById(id);
+//		edit.addObject("patient",patientOptional);
+//		return edit;
+//		
+//	}
+	
+	
+	
+	@GetMapping("/users")
+	public String listUsers(Model model) {
+		List<User> listUsers = userRepo.findAll();
+		model.addAttribute("listUsers", listUsers);
+		
+		List<Doctor> listDoctor = doctorRepo.findAll();
+		model.addAttribute("listDoctors", listDoctor);
+		
+		List<Patient> listPatient = patientRepo.findAll();
+		model.addAttribute("listPatients", listPatient);
+		
+		return "users";
+	}
+//	@GetMapping("/doctorpage")
+//	public String listDoctors(Model model) {
+//		
+//		return "doctorpage";
+//		
+//	}
+	
+	@GetMapping("/patientpage")
+	public String listPatients(Model model) {
+		
+		return "patientpage";
+		
+	}
+	
+}

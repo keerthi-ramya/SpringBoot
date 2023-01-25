@@ -1,0 +1,14 @@
+1. What is version control system?
+		
+
+
+2. Version Control system flow
+3. Vsersion Control Tools
+4. Introduction to GIt&Github
+5. Git terminalogy ( Working repo, Staging area, Local Repo, Remote Repo)
+6. Git work flow
+7. Git features
+8. Installatin of git In windows
+9. Git hub account Management
+10. GIT CMD (Git Add status, Git Commit -m Git Push, Git Fetch, Git Checkout)
+11. Operations and Usage.

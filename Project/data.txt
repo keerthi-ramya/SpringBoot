@@ -1,0 +1,736 @@
+1 SVAAS2.0-DOC-LOCAL
+Make things easier for your teammates with a complete collection description.
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------
+POST
+------------------
+Patient Login
+{{baseUrl}}/api/auth/employee/signin
+-----------------------------------------------------------------------------
+Make things easier for your teammates with a complete request description.
+Request Headers
+accept
+application/json
+Content-Type
+application/json
+Bodyraw (json)
+json
+{
+  "appName": "PWA",
+  "username": "8605062661",
+  "type": "PHONE",
+  "pinValue": "123456"
+}
+---------------------------------------------------------------------------------
+---------------------
+GET
+---------------------
+Doctor Home Screen
+{{baseUrl}}/doctor/search/v2/home
+----------------------------------------------------------------------------------
+Make things easier for your teammates with a complete request description.
+Request Headers
+Authorization
+Bearer {{userToken}}
+tenantId
+ABHI
+Query Params
+pageNo
+0
+pageSize
+10
+filterBy
+ALL
+status
+PAST
+search
+Card
+----------------------------------------------------------------------------------------------
+------------------
+GET
+------------------
+Doctors List By specialityId
+{{baseUrl}}/doctor/search/v2/list?specialityId=3&latitude=17.384999661659876&longitude=78.48669977858663&sortCode=DISTANCE&isVisit=true&pinCode=500095&pageNo=0&pageSize=10
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Make things easier for your teammates with a complete request description.
+Request Headers
+Authorization
+bearer {{userToken}}
+Query Params
+specialityId
+3
+latitude
+17.384999661659876
+longitude
+78.48669977858663
+sortCode
+DISTANCE
+isVisit
+true
+pinCode
+500095
+pageNo
+0
+pageSize
+10
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------
+POST
+------------------------
+HC login stage
+{{baseUrl}}/api/auth/employee/signin
+Make things easier for your teammates with a complete request description.
+Bodyraw (json)
+json
+{
+  "username": "mamathar@drreddys.com",
+  "type": "EMAIL",
+  "pinValue": "123456",
+  "appName": "HC"
+}
+--------------------------------------------------------------------------------------
+----------------
+GET
+-----------------
+Appointment Details_Past
+{{baseUrl}}/doctor/appointment/v2/ALL?filterBy=&pageNo=&pageSize=&patientId=SVEMP-8fb591e6-1b96-11ec-ac75-d3abdd530933
+----------------------------------------------------------------------------------------------------------------------------
+Make things easier for your teammates with a complete request description.
+Request Headers
+Authorization
+Bearer {{userToken}}
+Query Params
+filterBy
+pageNo
+pageSize
+patientId
+SVEMP-8fb591e6-1b96-11ec-ac75-d3abdd530933
+-------------------------------------------------------------------------------------------------------------------------------
+--------------
+GET
+--------------
+Search Suggestions
+{{baseUrl}}/doctor/search/v2/suggestions?userLocationLat=17.384999661659876&userLocationLong=78.48669977858663&searchTerm=divya&pinCode=500095
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+Make things easier for your teammates with a complete request description.
+Request Headers
+Authorization
+bearer {{userToken}}
+Query Params
+userLocationLat
+17.384999661659876
+userLocationLong
+78.48669977858663
+searchTerm
+divya
+pinCode
+500095
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------
+GET
+-----------------
+Specialization List
+{{baseUrl}}/doctor/search/v2/specializations
+Make things easier for your teammates with a complete request description.
+Request Headers
+Authorization
+Bearer {{userToken}}
+Query Params
+search
+Card
+-----------------------------------------------------------------------------------------------------
+------------------
+GET
+------------------
+Marketing Data
+{{baseUrl}}/svaas/patient/v2/marketinginfo
+Make things easier for your teammates with a complete request description.
+Request Headers
+Authorization
+bearer {{userToken}}
+--------------------------------------------------------------------------------------------------------
+-----------------
+GET
+------------------
+Doctor Details
+{{baseUrl}}/doctor/search/v2/details?id=4
+Make things easier for your teammates with a complete request description.
+Request Headers
+Authorization
+Bearer {{userToken}}
+Query Params
+id
+4
+--------------------------------------------------------------------------------------------------------------
+-------------
+GET
+--------------
+Appointment Details by table Id
+{{baseUrl}}/doctor/appointment/v2/details?appointmentId=10397&patientId=SVEMP-8fb591e6-1b96-11ec-ac75-d3abdd530933
+Make things easier for your teammates with a complete request description.
+Request Headers
+Authorization
+Bearer {{userToken}}
+Query Params
+appointmentId
+10397
+patientId
+SVEMP-8fb591e6-1b96-11ec-ac75-d3abdd530933
+-------------------------------------------------------------------------------------------------------------------------------------
+---------------
+GET
+-----------------
+Patient Dependents
+{{baseUrl}}/svaas/patient/v2/dependents?phoneNo=9963982999
+Make things easier for your teammates with a complete request description.
+Request Headers
+Authorization
+bearer {{userToken}}
+tenantId
+ABHI
+Query Params
+phoneNo
+9963982999
+POST
+Doctor MDM
+http://localhost:8888/doctor/search/v2/mdm
+Make things easier for your teammates with a complete request description.
+Request Headers
+Authorization
+Bearer {{userToken}}
+Content-Type
+text/plain
+Cookie
+JSESSIONID=031FB4FD4E0D22FC6125E2DA4F05D505
+Bodyraw (text)
+text
+{
+  "query": "query doctorName($advanceQuery: String) {\n  getDoctors(advanceQuery: $advanceQuery) {\n    firstName\n    middleName\n    lastName\n    email\n    primarySpecialization\n    secondarySpecialization\n    yearOfExperience\n    languages\n    profilePicture\n    qualifications\n    clinics {\n      id\n      branchId\n      branchName\n      location {\n        lon\n        lat\n      }\n      address\n      pincode\n      state\n      city\n      consultationFee\n    }\n    eConsultation {\n      consultationFee\n      insuranceProviderId\n    }\n  }\n}\n"
+}
+GET
+slots
+{{baseUrl}}/doctor/appointment/v2/slots?appointmentType=VIDEO&clinicId=6576547&doctorId=5459627&fromDate=17/08/2022&toDate=17/08/2022&patientId=SVEMP-8fb591e6-1b96-11ec-ac75-d3abdd530933
+Make things easier for your teammates with a complete request description.
+Request Headers
+accept
+application/json
+Authorization
+bearer {{userToken}}
+Cookie
+JSESSIONID=86D3004751F773FECB7E544D88B63D44
+Query Params
+appointmentType
+VIDEO
+clinicId
+6576547
+doctorId
+5459627
+fromDate
+17/08/2022
+toDate
+17/08/2022
+patientId
+SVEMP-8fb591e6-1b96-11ec-ac75-d3abdd530933
+POST
+HC-appointment-book(HLPX)
+{{baseUrl}}/doctor/appointment/book
+Make things easier for your teammates with a complete request description.
+Request Headers
+accept
+application/json
+Authorization
+Bearer {{hcLogin}}
+Content-Type
+application/json
+Bodyraw (json)
+json
+{
+  "doctorId": 4,
+  "clinicId": 4819,
+  "userId": 5497,
+  "date": "17/05/2022",
+  "productCode": "DR0018D4",
+  "type": "VIDEO",
+  "slot": {
+    "startTime": "07:40",
+    "endTime": "07:50"
+  }
+}
+POST
+book appointment by Patient Login
+{{baseUrl}}/doctor/appointment/v2/book?patientId=SVEMP-8fb591e6-1b96-11ec-ac75-d3abdd530933
+Make things easier for your teammates with a complete request description.
+Request Headers
+accept
+application/json
+Authorization
+Bearer {{userToken}}
+Content-Type
+application/json
+Cookie
+JSESSIONID=86D3004751F773FECB7E544D88B63D44
+Query Params
+patientId
+SVEMP-8fb591e6-1b96-11ec-ac75-d3abdd530933
+Bodyraw (json)
+json
+{
+  "doctorId": 5459627,
+  "clinicId": 6576547,
+  "date": "17/08/2022",
+  "productCode": "DR006D2",
+  "type": "VIDEO",
+  "slot": {
+    "startTime": "19:50",
+    "endTime": "20:00"
+  }
+}
+DEL
+cancel appointment
+{{baseUrl}}/doctor/appointment/v2/cancel?appointmentId=10398&cancellationReason=SAAYANZZZZZZZZZZZZZZ&patientId=SVEMP-8fb591e6-1b96-11ec-ac75-d3abdd530933
+Make things easier for your teammates with a complete request description.
+Request Headers
+accept
+application/json
+Authorization
+Bearer {{userToken}}
+tenantId
+ABHI
+Query Params
+appointmentId
+10398
+cancellationReason
+SAAYANZZZZZZZZZZZZZZ
+patientId
+SVEMP-8fb591e6-1b96-11ec-ac75-d3abdd530933
+PUT
+reschedule
+{{baseUrl}}/doctor/appointment/v2/reschedule?patientId=SVEMP-8fb591e6-1b96-11ec-ac75-d3abdd530933
+Make things easier for your teammates with a complete request description.
+Request Headers
+accept
+application/json
+Authorization
+Bearer {{userToken}}
+Content-Type
+application/json
+Cookie
+JSESSIONID=86D3004751F773FECB7E544D88B63D44
+Query Params
+patientId
+SVEMP-8fb591e6-1b96-11ec-ac75-d3abdd530933
+Bodyraw (json)
+json
+{
+  "appointmentId": 10398,
+  "date": "09/08/2022",
+  "slot": {
+    "startTime": "21:40",
+    "endTime": "21:50"
+  }
+}
+POST
+Upload AppointmentFile
+{{baseUrl}}/doctor/appointment/v2/upload?appointmentId=9555
+Make things easier for your teammates with a complete request description.
+Request Headers
+Authorization
+Bearer {{userToken}}
+Query Params
+appointmentId
+9555
+policyId
+OPD665243
+policyCompany
+ABHI
+Bodyform-data
+file
+/C:/Users/laptop/Pictures/Screenshots/Screenshot (59).png
+GET
+coverage
+{{baseUrl}}/coverage-service/v2/coverage
+Make things easier for your teammates with a complete request description.
+Request Headers
+Authorization
+bearer {{userToken}}
+GET
+Appointment_Detail_By_svaas_Appointment_id
+{{baseUrl}}/doctor/appointment/details?appointmentId=D-HX2804-1710-8218667785
+Make things easier for your teammates with a complete request description.
+Request Headers
+Authorization
+bearer {{userToken}}
+Query Params
+appointmentId
+D-HX2804-1710-8218667785
+POST
+(HLPX) login
+{{baseUrl}}/api/auth/partners/login
+Make things easier for your teammates with a complete request description.
+Request Headers
+accept
+application/json
+Authorization
+sad
+Content-Type
+application/json
+Bodyraw (json)
+json
+{
+  "clientId": "HEALTHPLIX",
+  "clientKey": "healthplix-client",
+  "clientSecret": "9CbXXDP.x=L98V:C"
+}
+POST
+Navia login
+{{baseUrl}}:8080/partners/login
+Make things easier for your teammates with a complete request description.
+Request Headers
+accept
+application/json
+Authorization
+sad
+Content-Type
+application/json
+Bodyraw (json)
+json
+{
+  "clientId": "NAVIA",
+  "clientKey": "navia-client",
+  "clientSecret": "9CbXXDP.x=L98V:C"
+}
+GET
+trackStatus
+http://localhost:8888/doctor/appointment/track/status?appointmentId=123
+Make things easier for your teammates with a complete request description.
+Request Headers
+Authorization
+Bearer {{userToken}}
+Cookie
+JSESSIONID=EA1F3378531DF0C88E86CAE58F6EBE69
+Query Params
+appointmentId
+123
+PUT
+update appointment(HLPX) Copy
+{{baseUrl}}:8080/doctor/inbound/appointments/45455652125
+Make things easier for your teammates with a complete request description.
+Request Headers
+accept
+application/json
+Content-Type
+application/json
+Authorization
+Bearer {{partnerToken}}
+Cookie
+JSESSIONID=48DC6B476FA7D52DB0F0058E026D79F7
+Bodyraw (json)
+json
+{
+  "data": {
+    "appointment_details": {
+      "appointment_date": "2022-05-10",
+      "start_time": "10:00",
+      "end_time": "10:10",
+      "appointment_type": "InPerson",
+      "appointment_status": "confirmed"
+    },
+    "appointment_id": "45455652125",
+    "doctor_id": "5459627",
+    "branch_id": "6576547",
+    "policy_id": "OPD552248",
+    "policy_company": "Aditya Birla Health Insurance"
+  }
+}
+POST
+(HLPX) book appointment
+{{base}}:8080/doctor/inbound/appointments/
+Make things easier for your teammates with a complete request description.
+Authorization
+Bearer Token
+Token
+{{partnerToken}}
+Request Headers
+accept
+application/json
+Content-Type
+application/json
+Authorization
+{{partnerToken}}
+Bodyraw (json)
+json
+{
+  "data": {
+    "appointment_details": {
+      "appointment_date": "2022-05-14",
+      "start_time": "08:40",
+      "end_time": "08:50",
+      "appointment_type": "OnlineConsultation",
+      "appointment_status": "confirmed"
+    },
+    "appointment_id": "45455652126",
+    "doctor_id": "5459627",
+    "branch_id": "6576547",
+    "policy_id": "OPD665243",
+    "policy_company": "Aditya Birla Health Insurance"
+  }
+}
+POST
+(HLPX) push prescription
+{{base}}:8080/doctor/inbound/appointments/687298118/prescription
+Make things easier for your teammates with a complete request description.
+Authorization
+Bearer Token
+Token
+{{partnerToken}}
+Request Headers
+accept
+application/json
+Content-Type
+application/json
+Authorization
+{{partnerToken}}
+Bodyraw (json)
+json
+{
+  "data": {
+    "advice": "advice",
+    "appointment_id": "687298118",
+    "svaas_appointment_id": "D-HX2005-1423-9543606342",
+    "branch_id": "6576547",
+    "complaints": "fever",
+    "diagnosis": "dengue fever",
+    "doctor_id": "5459627",
+    "next_visit": "2022-05-31",
+    "policy_company": "ABHI",
+    "policy_id": "OPD775623",
+    "referred_doctor": "Dr Mamatha",
+    "rx_date": "2022-05-25",
+    "rx_pdf": "https://www.orimi.com/pdf-test.pdf",
+    "rx_raw": [
+      {
+        "dosage": "0-1-1",
+        "duration": "50 Days",
+        "frequency": "daily",
+        "timing": "Before Food",
+        "medicine_name": "1 0.5ML INJ"
+      },
+      {
+        "dosage": "1-1-1",
+        "duration": "60 Days",
+        "frequency": "daily",
+        "timing": "Before Food",
+        "medicine_name": "10D 500ML NIRLIFE "
+      },
+      {
+        "dosage": "0-1-1",
+        "duration": "50 Days",
+        "frequency": "daily",
+        "timing": "Before Food",
+        "medicine_name": "2BACONIL 2MG GUMS"
+      },
+      {
+        "dosage": "0-1-1",
+        "duration": "50 Days",
+        "frequency": "daily",
+        "timing": "Before Food",
+        "medicine_name": "3G DOX O TAB"
+      },
+      {
+        "dosage": "0-1-1",
+        "duration": "50 Days",
+        "frequency": "daily",
+        "timing": "Before Food",
+        "medicine_name": "ZYWAN 300MG CAP"
+      },
+      {
+        "dosage": "0-1-1",
+        "duration": "50 Days",
+        "frequency": "daily",
+        "timing": "Before Food",
+        "medicine_name": "ZYZOLIN 10ML ADULT NASAL SPRAY"
+      },
+      {
+        "dosage": "0-1-1",
+        "duration": "50 Days",
+        "frequency": "daily",
+        "timing": "Before Food",
+        "medicine_name": "ZYVEN OD PLUS 50MG TAB"
+      },
+      {
+        "dosage": "0-1-1",
+        "duration": "50 Days",
+        "frequency": "daily",
+        "timing": "Before Food",
+        "medicine_name": "RANTAC 150MG TABLET"
+      }
+    ],
+    "tests_advised": [
+      "Creatinine - Serum",
+      "Creatinine - Urine",
+      "UREA - Serum",
+      "Creatinine Clearance Test - Urine",
+      "HBA1C",
+      "X-RAY - HSG",
+      "Cholesterol - Total - Serum",
+      "ECG"
+    ],
+    "vitals": {
+      "bmi": "bmi",
+      "bp-dia": "12",
+      "bp-sys": "23",
+      "height": "3345",
+      "pulse": "80",
+      "weight": "200"
+    }
+  }
+}
+GET
+Followup/verify
+{{baseUrl}}/doctor/appointment/followup/verify?appointmentDate=16/08/2022&appointmentType=IN_PERSON&clinicId=6576547&doctorId=5459627&userId=5493
+Make things easier for your teammates with a complete request description.
+Request Headers
+accept
+application/json
+Authorization
+Bearer {{userToken}}
+tenantId
+ABHI
+Query Params
+appointmentDate
+16/08/2022
+appointmentType
+IN_PERSON
+clinicId
+6576547
+doctorId
+5459627
+userId
+5493
+POST
+member_signin
+{{baseUrl}}/api/auth/employee/member/signin
+Make things easier for your teammates with a complete request description.
+Authorization
+Bearer Token
+Token
+{{parentLogin}}
+Request Headers
+accept
+application/json
+Authorization
+dvs
+Content-Type
+application/json
+Bodyraw (json)
+json
+{
+  "svassUserId": "SVEMP-a96b380a-d7ad-4a3b-9a5c-68b4124e78e7"
+}
+GET
+Doctor_Clinic_Details
+{{baseUrl}}/api/appointment/doctor/v2/mdm/details?doctorId=5459627&clinicId=6576547&consultationType=OnlineConsultation
+Make things easier for your teammates with a complete request description.
+Query Params
+doctorId
+5459627
+clinicId
+6576547
+consultationType
+OnlineConsultation
+POST
+HC_dev
+{{baseUrl}}/api/auth/employee/signin
+Make things easier for your teammates with a complete request description.
+Request Headers
+accept
+application/json
+Authorization
+sa
+Content-Type
+application/json
+Cookie
+JSESSIONID=7C6979E879A43F0B6E15F3AC27AB62FD
+Bodyraw (json)
+json
+{
+  "appName": "HC",
+  "username": "6360904964",
+  "type": "PHONE",
+  "pinValue": "222222"
+}
+POST
+doctor Billing Cost BreakDown
+{{baseUrl}}/svaas/patient/v2/doctorBillingCostBreakdown?clinicId=6576547&doctorId=5459627&type=IN_PERSON&patientId=SVEMP-8fb591e6-1b96-11ec-ac75-d3abdd530933
+Make things easier for your teammates with a complete request description.
+Authorization
+Bearer Token
+Token
+{{userToken}}
+Query Params
+clinicId
+6576547
+doctorId
+5459627
+type
+IN_PERSON
+patientId
+SVEMP-8fb591e6-1b96-11ec-ac75-d3abdd530933
+GET
+Doc_Details_From_MDM_By_DoctorId
+{{baseUrl}}/api/appointment/doctor/v2/mdm/details/5459627
+Make things easier for your teammates with a complete request description.
+POST
+Partner Cancel Appointment
+http://localhost:8888/healthplix/doctor/add-update-appointment
+Make things easier for your teammates with a complete request description.
+Authorization
+Bearer Token
+Token
+{{partnerToken}}
+Request Headers
+Authorization
+Bearer 7b3250a8-30ba-44d2-aa98-a9f1e2fe27b3
+Content-Type
+application/json
+Cookie
+JSESSIONID=7F38D6366F25A0DA1829B8CDE5683471; JSESSIONID=48723EAF55C7686D00AF6E705F108A96
+tenantId
+ABHI
+Bodyraw (json)
+json
+{
+  "data": {
+    "appointment_details": {
+      "appointment_date": "2022-08-09",
+      "appointment_status": "cancelled",
+      "appointment_type": "OnlineConsultation",
+      "cancellation_reason": "RAVI CANCELLED",
+      "cancelled_by": "",
+      "start_time": "07:00",
+      "end_time": "07:10"
+    },
+    "appointment_id": "286793816",
+    "branch_id": "6576547",
+    "doctor_id": "5459627",
+    "policy_company": "Aditya Birla Health Insurance",
+    "policy_id": "OPD223456"
+  }
+}
+GET
+upcoming_appointments
+{{baseUrl}}/doctor/appointment/upcoming?pageNo&pageSize&patientId=SVEMP-8fb591e6-1b96-11ec-ac75-d3abdd530933
+Make things easier for your teammates with a complete request description.
+Authorization
+Bearer Token
+Token
+{{userToken}}
+Request Headers
+tenantId
+ABHI
+Query Params
+pageNo
+pageSize
+patientId
+SVEMP-8fb591e6-1b96-11ec-ac75-d3abdd530933
+filterBy
